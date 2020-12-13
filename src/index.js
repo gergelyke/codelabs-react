@@ -1,51 +1,71 @@
 import React from "react";
 
-function Codelabs({ source, overrides = {} }) {
-  if (!source) throw new Error("Missing property: source");
+import { Header, SideNavigation, Content, Main } from "./components";
+
+function Codelabs({ content, overrides = {} }) {
+  if (!content) throw new Error("Missing property: content");
 
   const PageComponent = overrides.Page || Page;
   const HeaderComponent = overrides.Header || Header;
   const SideNavigationComponent = overrides.SideNavigation || SideNavigation;
   const ContentComponent = overrides.Content || Content;
+  const MainComponent = overrides.Main || Main;
 
-  const title = findElements(source.content, "TITLE");
-  const headings = findElements(source.content, "HEADING_1");
+  const titleNode = findElements(content, "TITLE")[0];
+  const headingNodes = findElements(content, "HEADING_1");
+
+  const title = getParagraphText(titleNode);
+  const headings = headingNodes.map(getParagraphText);
+
+  const pages = content.reduce((acc, current) => {
+    const { startIndex = 0 } = current;
+    for (let i = headingNodes.length - 1; i > 0; i -= 1) {
+      if (startIndex > headingNodes[i].startIndex) {
+        acc[i] = acc[i] || [];
+        acc[i].push(current);
+        break;
+      }
+    }
+    return acc;
+  }, []);
 
   return (
     <PageComponent
+      title={title}
+      navigationItems={headings}
       overrides={{
         HeaderComponent,
         SideNavigationComponent,
         ContentComponent,
+        MainComponent,
       }}
     />
   );
 }
 
 function Page({
-  overrides: { HeaderComponent, SideNavigationComponent, ContentComponent },
+  title,
+  navigationItems,
+  overrides: {
+    HeaderComponent,
+    SideNavigationComponent,
+    ContentComponent,
+    MainComponent,
+  },
 }) {
   return (
     <div>
-      <HeaderComponent />
-      <div>
-        <SideNavigationComponent />
+      <HeaderComponent title={title} />
+      <MainComponent>
+        <SideNavigationComponent items={navigationItems} />
         <ContentComponent />
-      </div>
+      </MainComponent>
     </div>
   );
 }
 
-function Header({}) {
-  return <span>I am the Header</span>;
-}
-
-function SideNavigation({}) {
-  return <nav>I am the SideNavigation</nav>;
-}
-
-function Content({}) {
-  return <nav>I am the ContentComponent</nav>;
+function getParagraphText(node) {
+  return node.paragraph.elements[0].textRun.content;
 }
 
 function findElements(content, type) {

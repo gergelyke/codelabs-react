@@ -9,5 +9,5 @@ export default {
 };
 
 export const Example = () => {
-  return <Codelabs source={source} />;
+  return <Codelabs content={source.content} />;
 };
