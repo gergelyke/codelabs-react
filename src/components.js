@@ -15,9 +15,11 @@ export function Header({ title }) {
 
 export function SideNavigation({ items }) {
   return (
-    <nav style={{
-      width: '200px'
-    }}>
+    <nav
+      style={{
+        width: "200px",
+      }}
+    >
       <ul>
         {items.map((item, index) => (
           <li key={item}>
@@ -29,14 +31,29 @@ export function SideNavigation({ items }) {
   );
 }
 
-export function Content({}) {
-  return <section style={{
-    flex: 1
-  }}>I am the ContentComponent</section>;
+export function Content({ pages }) {
+  console.log(pages);
+  return (
+    <section
+      style={{
+        flex: 1,
+      }}
+    >
+      {pages.map((page) => {
+        return page;
+      })}
+    </section>
+  );
 }
 
 export function Main({ children }) {
-  return <main style={{
-    display: 'flex'
-  }}>{children}</main>;
+  return (
+    <main
+      style={{
+        display: "flex",
+      }}
+    >
+      {children}
+    </main>
+  );
 }
