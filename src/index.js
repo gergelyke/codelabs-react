@@ -1,6 +1,17 @@
 import React from "react";
 
-import { Header, SideNavigation, Content, Main } from "./components";
+import {
+  Header,
+  SideNavigation,
+  Content,
+  Main,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Span,
+} from "./components";
 
 function Codelabs({ content, overrides = {} }) {
   if (!content) throw new Error("Missing property: content");
@@ -10,6 +21,21 @@ function Codelabs({ content, overrides = {} }) {
   const SideNavigationComponent = overrides.SideNavigation || SideNavigation;
   const ContentComponent = overrides.Content || Content;
   const MainComponent = overrides.Main || Main;
+  const H2Component = overrides.H2 || H2;
+  const H3Component = overrides.H3 || H3;
+  const H4Component = overrides.H4 || H4;
+  const H5Component = overrides.H5 || H5;
+  const H6Component = overrides.H6 || H6;
+  const SpanComponent = overrides.Span || Span;
+
+  const Text = TextFactory({
+    H2Component,
+    H3Component,
+    H4Component,
+    H5Component,
+    H6Component,
+    SpanComponent,
+  });
 
   const titleNode = findElements(content, "TITLE")[0];
   const headingNodes = findElements(content, "HEADING_1");
@@ -24,8 +50,6 @@ function Codelabs({ content, overrides = {} }) {
     }
     return acc;
   }, []);
-
-  console.log(content);
 
   const title = getParagraphText(titleNode);
   const headings = headingNodes.map(getParagraphText);
@@ -112,40 +136,49 @@ function getParagraphSpacingMode(node) {
   return node.paragraph.paragraphStyle.spacingMode;
 }
 
-function Text({ bold, type, text, overrides = {} }) {
-  if (type === "HEADING_2") {
-    return <h2>{text}</h2>;
-  }
+function TextFactory({
+  H2Component,
+  H3Component,
+  H4Component,
+  H5Component,
+  H6Component,
+  SpanComponent,
+}) {
+  return function ({ bold, type, text }) {
+    if (type === "HEADING_2") {
+      return <H2Component>{text}</H2Component>;
+    }
 
-  if (type === "HEADING_3") {
-    return <h3>{text}</h3>;
-  }
+    if (type === "HEADING_3") {
+      return <H3Component>{text}</H3Component>;
+    }
 
-  if (type === "HEADING_4") {
-    return <h4>{text}</h4>;
-  }
+    if (type === "HEADING_4") {
+      return <H4Component>{text}</H4Component>;
+    }
 
-  if (type === "HEADING_5") {
-    return <h5>{text}</h5>;
-  }
+    if (type === "HEADING_5") {
+      return <H5Component>{text}</H5Component>;
+    }
 
-  if (type === "HEADING_6") {
-    return <h6>{text}</h6>;
-  }
+    if (type === "HEADING_6") {
+      return <H6Component>{text}</H6Component>;
+    }
 
-  if (type === "NORMAL_TEXT") {
-    return (
-      <span
-        style={{
-          fontWeight: bold ? "800" : "400",
-        }}
-      >
-        {text}
-      </span>
-    );
-  }
+    if (type === "NORMAL_TEXT") {
+      return (
+        <SpanComponent
+          style={{
+            fontWeight: bold ? "800" : "400",
+          }}
+        >
+          {text}
+        </SpanComponent>
+      );
+    }
 
-  return null;
+    return null;
+  };
 }
 
 function findElements(content, type) {
