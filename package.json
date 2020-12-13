@@ -19,9 +19,12 @@
     "@storybook/addon-links": "^6.1.11",
     "@storybook/react": "^6.1.11",
     "babel-loader": "^8.2.2",
+    "baseui": "^9.106.2",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "styletron-engine-atomic": "^1.4.6",
+    "styletron-react": "^5.2.7"
   },
   "dependencies": {}
 }
