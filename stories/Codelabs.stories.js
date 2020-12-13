@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { Codelabs } from '../src/index.js';
+import { Codelabs } from "../src/index.js";
+import source from "./document-1607876232180.json";
 
 export default {
-  title: 'Codelabs/Example',
+  title: "Codelabs/Example",
   component: Codelabs,
 };
 
-const Template = (args) => <Codelabs {...args} />;
-
-export const FirstStory = Template.bind({});
+export const Example = () => {
+  return <Codelabs source={source} />;
+};
