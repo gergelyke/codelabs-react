@@ -12,6 +12,7 @@ import { Navigation } from "baseui/side-navigation";
 import { H2, H3, H4, H5, H6 } from "baseui/typography";
 import { Block } from "baseui/block";
 import { Button } from "baseui/button";
+import { StyledLink } from "baseui/link";
 
 export default {
   title: "Codelabs/Example",
@@ -69,6 +70,9 @@ export const BaseWeb = () => {
               {children}
             </Button>
           );
+        },
+        Link: ({ children, href }) => {
+          return <StyledLink href={href}>{children}</StyledLink>;
         },
       }}
     />

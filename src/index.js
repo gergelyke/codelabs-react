@@ -13,6 +13,7 @@ import {
   Span,
   Button,
   Snippet,
+  Link,
 } from "./components";
 
 import {
@@ -21,6 +22,7 @@ import {
   getParagraphSpacingMode,
   isCommandLineSnippet,
   isButton,
+  isLink,
 } from "./utils";
 
 function Codelabs({ content, overrides = {} }) {
@@ -39,6 +41,7 @@ function Codelabs({ content, overrides = {} }) {
   const SpanComponent = overrides.Span || Span;
   const ButtonComponent = overrides.Button || Button;
   const SnippetComponent = overrides.Snippet || Snippet;
+  const LinkComponent = overrides.Link || Link;
 
   const Text = TextFactory({
     H2Component,
@@ -91,6 +94,14 @@ function Codelabs({ content, overrides = {} }) {
               <p>
                 <SnippetComponent>{textRun.content}</SnippetComponent>
               </p>
+            );
+          }
+
+          if (isLink(textRun)) {
+            return (
+              <LinkComponent href={textRun.textStyle.link.url}>
+                {textRun.content}
+              </LinkComponent>
             );
           }
 

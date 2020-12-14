@@ -33,3 +33,15 @@ export function isButton(textRun) {
     return false;
   }
 }
+
+export function isLink(textRun) {
+  try {
+    return (
+      textRun.textStyle &&
+      textRun.textStyle.foregroundColor &&
+      textRun.textStyle.link
+    );
+  } catch (e) {
+    return false;
+  }
+}

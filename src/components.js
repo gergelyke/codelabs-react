@@ -98,6 +98,14 @@ export function Button({ children, href }) {
   );
 }
 
+export function Link({ children, href }) {
+  return (
+    <a target="_blank" href={href}>
+      {children}
+    </a>
+  );
+}
+
 export function Snippet({ children }) {
   return (
     <pre>
