@@ -16,6 +16,7 @@ import {
   Link,
   InfoBox,
   WarningBox,
+  CodeBox
 } from "./components";
 
 import {
@@ -25,9 +26,12 @@ import {
   isCommandLineSnippet,
   isButton,
   isLink,
-  isInfoBox,
   isBold,
+
+  isInfoBox,
   isWarningBox,
+  isCodeBox,
+  getCode,
 } from "./utils";
 
 function Codelabs({ content, overrides = {} }) {
@@ -49,6 +53,7 @@ function Codelabs({ content, overrides = {} }) {
   const LinkComponent = overrides.Link || Link;
   const InfoBoxComponent = overrides.InfoBox || InfoBox;
   const WarningBoxComponent = overrides.WarningBox || WarningBox;
+  const CodeBoxComponent = overrides.CodeBox || CodeBox;
 
   const Text = TextFactory({
     H2Component,
@@ -148,6 +153,17 @@ function Codelabs({ content, overrides = {} }) {
             processParagraphElements({ type: "NORMAL_TEXT" })
           );
           return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
+        }
+
+        if (isCodeBox(node.table)) {
+          return (
+            <pre>
+              <code>
+                {getCode(node.table.tableRows[0].tableCells[0])}
+              </code>
+            </pre>
+          )
+          
         }
       }
       return;

@@ -114,6 +114,14 @@ export function Snippet({ children }) {
   );
 }
 
+export function CodeBox({ children }) {
+  return (
+    <pre>
+      <code>{children}</code>
+    </pre>
+  );
+}
+
 export function InfoBox({ children }) {
   return (
     <div
