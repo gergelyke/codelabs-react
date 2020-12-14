@@ -177,7 +177,7 @@ function Codelabs({ content, overrides = {} }) {
     <PageComponent
       title={title}
       navigationItems={headings}
-      pages={pages}
+      page={pages[page]}
       currentPage={page}
       setPage={setPage}
       overrides={{
@@ -193,7 +193,7 @@ function Codelabs({ content, overrides = {} }) {
 function Page({
   title,
   navigationItems,
-  pages,
+  page,
   currentPage,
   setPage,
   overrides: {
@@ -212,7 +212,7 @@ function Page({
           setPage={setPage}
           currentPage={currentPage}
         />
-        <ContentComponent pages={pages} currentPage={currentPage} />
+        <ContentComponent currentPage={currentPage}>{page}</ContentComponent>
       </MainComponent>
     </div>
   );

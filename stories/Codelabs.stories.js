@@ -30,6 +30,22 @@ export const BaseWeb = () => {
     <Codelabs
       content={source.content}
       overrides={{
+        Content: ({ children }) => {
+          return (
+            <Block
+              flex="1"
+              maxWidth="1200px"
+              padding="16px"
+              overrides={{
+                Block: {
+                  style: { boxShadow: "0 1px 4px hsla(0, 0%, 0%, 0.16)" },
+                },
+              }}
+            >
+              {children}
+            </Block>
+          );
+        },
         Header: ({ title }) => {
           return (
             <HeaderNavigation>

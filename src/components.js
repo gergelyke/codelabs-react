@@ -43,8 +43,7 @@ export function SideNavigation({ items, setPage }) {
   );
 }
 
-export function Content({ pages, currentPage }) {
-  console.log({ pages });
+export function Content({ children }) {
   return (
     <section
       style={{
@@ -52,7 +51,7 @@ export function Content({ pages, currentPage }) {
         maxWidth: "1200px",
       }}
     >
-      <>{pages[currentPage]}</>
+      {children}
     </section>
   );
 }
