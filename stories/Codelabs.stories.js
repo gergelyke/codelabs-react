@@ -11,6 +11,7 @@ import {
 import { Navigation } from "baseui/side-navigation";
 import { H2, H3, H4, H5, H6 } from "baseui/typography";
 import { Block } from "baseui/block";
+import { Button } from "baseui/button";
 
 export default {
   title: "Codelabs/Example",
@@ -57,6 +58,16 @@ export const BaseWeb = () => {
             <Block $as="span" font="font400">
               {children}
             </Block>
+          );
+        },
+        Button: ({ children, href }) => {
+          return (
+            <Button
+              href={href}
+              overrides={{ BaseButton: { props: { $as: "a" } } }}
+            >
+              {children}
+            </Button>
           );
         },
       }}

@@ -11,6 +11,7 @@ import {
   H5,
   H6,
   Span,
+  Button,
 } from "./components";
 
 function Codelabs({ content, overrides = {} }) {
@@ -27,6 +28,7 @@ function Codelabs({ content, overrides = {} }) {
   const H5Component = overrides.H5 || H5;
   const H6Component = overrides.H6 || H6;
   const SpanComponent = overrides.Span || Span;
+  const ButtonComponent = overrides.Button || Button;
 
   const Text = TextFactory({
     H2Component,
@@ -35,6 +37,7 @@ function Codelabs({ content, overrides = {} }) {
     H5Component,
     H6Component,
     SpanComponent,
+    ButtonComponent,
   });
 
   const titleNode = findElements(content, "TITLE")[0];
@@ -57,27 +60,45 @@ function Codelabs({ content, overrides = {} }) {
     return page.map((node) => {
       // we have text node, with possibly multiple elements
       if (node.paragraph) {
+        // we can run into a few special cases based on type or other properties
         const type = getParagraphType(node);
-        const isListItem = getParagraphSpacingMode(node) === "COLLAPSE_LISTS";
 
-        const pContent = node.paragraph.elements.map((element) => {
-          if (!element.textRun) return null;
+        const pContent = node.paragraph.elements.map(({ textRun }) => {
+          if (!textRun) return null;
+
+          // we use background colors and the link property to mark buttons
+          if (
+            textRun.textStyle &&
+            textRun.textStyle.backgroundColor &&
+            textRun.textStyle.link
+          ) {
+            return (
+              <p>
+                <ButtonComponent href={textRun.textStyle.link.url}>
+                  {textRun.content}
+                </ButtonComponent>
+              </p>
+            );
+          }
+
           return (
             <Text
               type={type}
-              text={element.textRun.content}
-              bold={element.textRun.textStyle && element.textRun.textStyle.bold}
+              text={textRun.content}
+              bold={textRun.textStyle && textRun.textStyle.bold}
             />
           );
         });
 
-        return isListItem ? (
-          <ul>
-            <li>{pContent}</li>
-          </ul>
-        ) : (
-          pContent
-        );
+        if (getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
+          return (
+            <ul>
+              <li>{pContent}</li>
+            </ul>
+          );
+        }
+
+        return pContent;
       }
       return;
     });

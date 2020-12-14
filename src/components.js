@@ -5,7 +5,8 @@ export function Header({ title }) {
     <header
       style={{
         padding: "10px",
-        background: "#ddd",
+        fontWeight: 800,
+        fontSize: "32px",
       }}
     >
       {title}
@@ -32,7 +33,6 @@ export function SideNavigation({ items }) {
 }
 
 export function Content({ pages }) {
-  console.log(pages);
   return (
     <section
       style={{
@@ -80,4 +80,20 @@ export function H6({ children }) {
 
 export function Span({ children }) {
   return <span>{children}</span>;
+}
+
+export function Button({ children, href }) {
+  return (
+    <a
+      target="_blank"
+      href={href}
+      style={{
+        border: "1px solid #777",
+        background: "#ddd",
+        padding: "10px",
+      }}
+    >
+      {children}
+    </a>
+  );
 }
