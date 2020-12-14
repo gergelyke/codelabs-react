@@ -113,3 +113,29 @@ export function Snippet({ children }) {
     </pre>
   );
 }
+
+export function InfoBox({ children }) {
+  return (
+    <div
+      style={{
+        backgroundColor: "#90EE90",
+        padding: "20px",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function WarningBox({ children }) {
+  return (
+    <div
+      style={{
+        backgroundColor: "#fed8b1",
+        padding: "20px",
+      }}
+    >
+      {children}
+    </div>
+  );
+}

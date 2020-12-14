@@ -13,6 +13,7 @@ import { H2, H3, H4, H5, H6 } from "baseui/typography";
 import { Block } from "baseui/block";
 import { Button } from "baseui/button";
 import { StyledLink } from "baseui/link";
+import { Notification } from "baseui/notification";
 
 export default {
   title: "Codelabs/Example",
@@ -73,6 +74,29 @@ export const BaseWeb = () => {
         },
         Link: ({ children, href }) => {
           return <StyledLink href={href}>{children}</StyledLink>;
+        },
+        InfoBox: ({ children }) => {
+          return (
+            <Notification
+              overrides={{
+                Body: { style: { width: "auto" } },
+              }}
+            >
+              {children}
+            </Notification>
+          );
+        },
+        WarningBox: ({ children }) => {
+          return (
+            <Notification
+              kind="warning"
+              overrides={{
+                Body: { style: { width: "auto" } },
+              }}
+            >
+              {children}
+            </Notification>
+          );
         },
       }}
     />

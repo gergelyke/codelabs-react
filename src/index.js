@@ -14,6 +14,8 @@ import {
   Button,
   Snippet,
   Link,
+  InfoBox,
+  WarningBox,
 } from "./components";
 
 import {
@@ -23,6 +25,9 @@ import {
   isCommandLineSnippet,
   isButton,
   isLink,
+  isInfoBox,
+  isBold,
+  isWarningBox,
 } from "./utils";
 
 function Codelabs({ content, overrides = {} }) {
@@ -42,6 +47,8 @@ function Codelabs({ content, overrides = {} }) {
   const ButtonComponent = overrides.Button || Button;
   const SnippetComponent = overrides.Snippet || Snippet;
   const LinkComponent = overrides.Link || Link;
+  const InfoBoxComponent = overrides.InfoBox || InfoBox;
+  const WarningBoxComponent = overrides.WarningBox || WarningBox;
 
   const Text = TextFactory({
     H2Component,
@@ -69,6 +76,41 @@ function Codelabs({ content, overrides = {} }) {
 
   const title = getParagraphText(titleNode);
   const headings = headingNodes.map(getParagraphText);
+
+  function processParagraphElements({ type }) {
+    return function ({ textRun }) {
+      if (!textRun) return null;
+
+      if (isButton(textRun)) {
+        return (
+          <p>
+            <ButtonComponent href={textRun.textStyle.link.url}>
+              {textRun.content}
+            </ButtonComponent>
+          </p>
+        );
+      }
+
+      if (isCommandLineSnippet(textRun)) {
+        return (
+          <p>
+            <SnippetComponent>{textRun.content}</SnippetComponent>
+          </p>
+        );
+      }
+
+      if (isLink(textRun)) {
+        return (
+          <LinkComponent href={textRun.textStyle.link.url}>
+            {textRun.content}
+          </LinkComponent>
+        );
+      }
+
+      return <Text type={type} text={textRun.content} bold={isBold(textRun)} />;
+    };
+  }
+
   const pages = pageNodes.map((page) => {
     return page.map((node) => {
       // we have text node, with possibly multiple elements
@@ -76,43 +118,9 @@ function Codelabs({ content, overrides = {} }) {
         // we can run into a few special cases based on type or other properties
         const type = getParagraphType(node);
 
-        const pContent = node.paragraph.elements.map(({ textRun }) => {
-          if (!textRun) return null;
-
-          if (isButton(textRun)) {
-            return (
-              <p>
-                <ButtonComponent href={textRun.textStyle.link.url}>
-                  {textRun.content}
-                </ButtonComponent>
-              </p>
-            );
-          }
-
-          if (isCommandLineSnippet(textRun)) {
-            return (
-              <p>
-                <SnippetComponent>{textRun.content}</SnippetComponent>
-              </p>
-            );
-          }
-
-          if (isLink(textRun)) {
-            return (
-              <LinkComponent href={textRun.textStyle.link.url}>
-                {textRun.content}
-              </LinkComponent>
-            );
-          }
-
-          return (
-            <Text
-              type={type}
-              text={textRun.content}
-              bold={textRun.textStyle && textRun.textStyle.bold}
-            />
-          );
-        });
+        const pContent = node.paragraph.elements.map(
+          processParagraphElements({ type })
+        );
 
         if (getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
           return (
@@ -123,6 +131,24 @@ function Codelabs({ content, overrides = {} }) {
         }
 
         return pContent;
+      }
+
+      // we might have a codeblock, info or warning boxes
+      // they are all tables with the dimension 1x1
+      if (node.table) {
+        if (isInfoBox(node.table)) {
+          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
+            processParagraphElements({ type: "NORMAL_TEXT" })
+          );
+          return <InfoBoxComponent>{pContent}</InfoBoxComponent>;
+        }
+
+        if (isWarningBox(node.table)) {
+          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
+            processParagraphElements({ type: "NORMAL_TEXT" })
+          );
+          return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
+        }
       }
       return;
     });
