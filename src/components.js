@@ -14,7 +14,7 @@ export function Header({ title }) {
   );
 }
 
-export function SideNavigation({ items }) {
+export function SideNavigation({ items, setPage }) {
   return (
     <nav
       style={{
@@ -24,7 +24,18 @@ export function SideNavigation({ items }) {
       <ul>
         {items.map((item, index) => (
           <li key={item}>
-            <a href={`#${index}`}>{item}</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setPage(index);
+              }}
+              onKeyDown={(e) => {
+                e.key === "Enter" && setPage(index);
+              }}
+            >
+              {item}
+            </a>
           </li>
         ))}
       </ul>
@@ -32,29 +43,31 @@ export function SideNavigation({ items }) {
   );
 }
 
-export function Content({ pages }) {
+export function Content({ pages, currentPage }) {
+  console.log({ pages });
   return (
     <section
       style={{
         flex: 1,
+        maxWidth: "1200px",
       }}
     >
-      {pages.map((page) => {
-        return page;
-      })}
+      <>{pages[currentPage]}</>
     </section>
   );
 }
 
 export function Main({ children }) {
   return (
-    <main
-      style={{
-        display: "flex",
-      }}
-    >
-      {children}
-    </main>
+    <>
+      <main
+        style={{
+          display: "flex",
+        }}
+      >
+        {children}
+      </main>
+    </>
   );
 }
 
@@ -82,7 +95,7 @@ export function Span({ children }) {
   return <span>{children}</span>;
 }
 
-export function Button({ children, href }) {
+export function ButtonLink({ children, href }) {
   return (
     <a
       target="_blank"

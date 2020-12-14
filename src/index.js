@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Header,
@@ -11,12 +11,12 @@ import {
   H5,
   H6,
   Span,
-  Button,
+  ButtonLink,
   Snippet,
   Link,
   InfoBox,
   WarningBox,
-  CodeBox
+  CodeBox,
 } from "./components";
 
 import {
@@ -27,7 +27,6 @@ import {
   isButton,
   isLink,
   isBold,
-
   isInfoBox,
   isWarningBox,
   isCodeBox,
@@ -36,6 +35,8 @@ import {
 
 function Codelabs({ content, overrides = {} }) {
   if (!content) throw new Error("Missing property: content");
+
+  const [page, setPage] = useState(0);
 
   const PageComponent = overrides.Page || Page;
   const HeaderComponent = overrides.Header || Header;
@@ -48,7 +49,7 @@ function Codelabs({ content, overrides = {} }) {
   const H5Component = overrides.H5 || H5;
   const H6Component = overrides.H6 || H6;
   const SpanComponent = overrides.Span || Span;
-  const ButtonComponent = overrides.Button || Button;
+  const ButtonLinkComponent = overrides.ButtonLink || ButtonLink;
   const SnippetComponent = overrides.Snippet || Snippet;
   const LinkComponent = overrides.Link || Link;
   const InfoBoxComponent = overrides.InfoBox || InfoBox;
@@ -62,7 +63,7 @@ function Codelabs({ content, overrides = {} }) {
     H5Component,
     H6Component,
     SpanComponent,
-    ButtonComponent,
+    ButtonLinkComponent,
   });
 
   const titleNode = findElements(content, "TITLE")[0];
@@ -80,7 +81,9 @@ function Codelabs({ content, overrides = {} }) {
   }, []);
 
   const title = getParagraphText(titleNode);
-  const headings = headingNodes.map(getParagraphText);
+  const headings = headingNodes
+    .map(getParagraphText)
+    .filter((heading) => heading);
 
   function processParagraphElements({ type }) {
     return function ({ textRun }) {
@@ -89,9 +92,9 @@ function Codelabs({ content, overrides = {} }) {
       if (isButton(textRun)) {
         return (
           <p>
-            <ButtonComponent href={textRun.textStyle.link.url}>
+            <ButtonLinkComponent href={textRun.textStyle.link.url}>
               {textRun.content}
-            </ButtonComponent>
+            </ButtonLinkComponent>
           </p>
         );
       }
@@ -116,65 +119,67 @@ function Codelabs({ content, overrides = {} }) {
     };
   }
 
-  const pages = pageNodes.map((page) => {
-    return page.map((node) => {
-      // we have text node, with possibly multiple elements
-      if (node.paragraph) {
-        // we can run into a few special cases based on type or other properties
-        const type = getParagraphType(node);
+  const pages = pageNodes
+    .map((page) => {
+      return page.map((node) => {
+        // we have text node, with possibly multiple elements
+        if (node.paragraph) {
+          // we can run into a few special cases based on type or other properties
+          const type = getParagraphType(node);
 
-        const pContent = node.paragraph.elements.map(
-          processParagraphElements({ type })
-        );
-
-        if (getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
-          return (
-            <ul>
-              <li>{pContent}</li>
-            </ul>
+          const pContent = node.paragraph.elements.map(
+            processParagraphElements({ type })
           );
+
+          if (getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
+            return (
+              <ul>
+                <li>{pContent}</li>
+              </ul>
+            );
+          }
+
+          return pContent;
         }
 
-        return pContent;
-      }
+        // we might have a codeblock, info or warning boxes
+        // they are all tables with the dimension 1x1
+        if (node.table) {
+          if (isInfoBox(node.table)) {
+            const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
+              processParagraphElements({ type: "NORMAL_TEXT" })
+            );
+            return <InfoBoxComponent>{pContent}</InfoBoxComponent>;
+          }
 
-      // we might have a codeblock, info or warning boxes
-      // they are all tables with the dimension 1x1
-      if (node.table) {
-        if (isInfoBox(node.table)) {
-          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
-            processParagraphElements({ type: "NORMAL_TEXT" })
-          );
-          return <InfoBoxComponent>{pContent}</InfoBoxComponent>;
-        }
+          if (isWarningBox(node.table)) {
+            const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
+              processParagraphElements({ type: "NORMAL_TEXT" })
+            );
+            return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
+          }
 
-        if (isWarningBox(node.table)) {
-          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
-            processParagraphElements({ type: "NORMAL_TEXT" })
-          );
-          return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
-        }
-
-        if (isCodeBox(node.table)) {
-          return (
-            <pre>
-              <code>
+          if (isCodeBox(node.table)) {
+            return (
+              <CodeBoxComponent>
                 {getCode(node.table.tableRows[0].tableCells[0])}
-              </code>
-            </pre>
-          )
-          
+              </CodeBoxComponent>
+            );
+          }
         }
-      }
-      return;
-    });
-  });
+        return;
+      });
+      // removing empty pages, if any
+    })
+    .filter((page) => page);
 
   return (
     <PageComponent
       title={title}
       navigationItems={headings}
       pages={pages}
+      currentPage={page}
+      setPage={setPage}
       overrides={{
         HeaderComponent,
         SideNavigationComponent,
@@ -189,6 +194,8 @@ function Page({
   title,
   navigationItems,
   pages,
+  currentPage,
+  setPage,
   overrides: {
     HeaderComponent,
     SideNavigationComponent,
@@ -200,8 +207,12 @@ function Page({
     <div>
       <HeaderComponent title={title} />
       <MainComponent>
-        <SideNavigationComponent items={navigationItems} />
-        <ContentComponent pages={pages} />
+        <SideNavigationComponent
+          items={navigationItems}
+          setPage={setPage}
+          currentPage={currentPage}
+        />
+        <ContentComponent pages={pages} currentPage={currentPage} />
       </MainComponent>
     </div>
   );

@@ -8,12 +8,13 @@ import {
   ALIGN,
   StyledNavigationList,
 } from "baseui/header-navigation";
-import { Navigation } from "baseui/side-navigation";
 import { H2, H3, H4, H5, H6 } from "baseui/typography";
 import { Block } from "baseui/block";
 import { Button } from "baseui/button";
 import { StyledLink } from "baseui/link";
 import { Notification } from "baseui/notification";
+import Check from "baseui/icon/check";
+import { ListItem, ListItemLabel } from "baseui/list";
 
 export default {
   title: "Codelabs/Example",
@@ -38,16 +39,33 @@ export const BaseWeb = () => {
             </HeaderNavigation>
           );
         },
-        SideNavigation: ({ items }) => {
+        SideNavigation: ({ items, setPage, currentPage }) => {
           return (
-            <Navigation
-              items={items.map((item) => {
-                return {
-                  title: item,
-                  id: `#${item}`,
-                };
+            <ul>
+              {items.map((item, index) => {
+                return (
+                  <a
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      setPage(index);
+                    }}
+                  >
+                    <ListItem
+                      artwork={(props) => <Check {...props} />}
+                      overrides={{
+                        ArtworkContainer: {
+                          style: () => ({
+                            opacity: index > currentPage ? 0 : 1,
+                          }),
+                        },
+                      }}
+                    >
+                      <ListItemLabel>{item}</ListItemLabel>
+                    </ListItem>
+                  </a>
+                );
               })}
-            />
+            </ul>
           );
         },
         H2,
@@ -62,7 +80,7 @@ export const BaseWeb = () => {
             </Block>
           );
         },
-        Button: ({ children, href }) => {
+        ButtonLink: ({ children, href }) => {
           return (
             <Button
               href={href}

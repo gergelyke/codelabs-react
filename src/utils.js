@@ -117,15 +117,16 @@ export function isCodeBox(table) {
     return (
       table.rows === 1 &&
       table.columns === 1 &&
-      table.tableRows[0].tableCells[0].content[0].paragraph.elements[0].textRun.textStyle.weightedFontFamily.fontFamily === 'Courier New'
+      table.tableRows[0].tableCells[0].content[0].paragraph.elements[0].textRun
+        .textStyle.weightedFontFamily.fontFamily === "Courier New"
     );
   } catch (e) {
     return false;
   }
 }
 
-export function getCode (tableCell) {
+export function getCode(tableCell) {
   return tableCell.content.reduce((acc, current) => {
-    return acc += current.paragraph.elements[0].textRun.content
-  }, '')
+    return (acc += current.paragraph.elements[0].textRun.content);
+  }, "");
 }
