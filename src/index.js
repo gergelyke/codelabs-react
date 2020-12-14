@@ -12,7 +12,16 @@ import {
   H6,
   Span,
   Button,
+  Snippet,
 } from "./components";
+
+import {
+  getParagraphText,
+  getParagraphType,
+  getParagraphSpacingMode,
+  isCommandLineSnippet,
+  isButton,
+} from "./utils";
 
 function Codelabs({ content, overrides = {} }) {
   if (!content) throw new Error("Missing property: content");
@@ -29,6 +38,7 @@ function Codelabs({ content, overrides = {} }) {
   const H6Component = overrides.H6 || H6;
   const SpanComponent = overrides.Span || Span;
   const ButtonComponent = overrides.Button || Button;
+  const SnippetComponent = overrides.Snippet || Snippet;
 
   const Text = TextFactory({
     H2Component,
@@ -66,17 +76,20 @@ function Codelabs({ content, overrides = {} }) {
         const pContent = node.paragraph.elements.map(({ textRun }) => {
           if (!textRun) return null;
 
-          // we use background colors and the link property to mark buttons
-          if (
-            textRun.textStyle &&
-            textRun.textStyle.backgroundColor &&
-            textRun.textStyle.link
-          ) {
+          if (isButton(textRun)) {
             return (
               <p>
                 <ButtonComponent href={textRun.textStyle.link.url}>
                   {textRun.content}
                 </ButtonComponent>
+              </p>
+            );
+          }
+
+          if (isCommandLineSnippet(textRun)) {
+            return (
+              <p>
+                <SnippetComponent>{textRun.content}</SnippetComponent>
               </p>
             );
           }
@@ -139,22 +152,6 @@ function Page({
       </MainComponent>
     </div>
   );
-}
-
-function getParagraphText(node) {
-  return (
-    node.paragraph &&
-    node.paragraph.elements[0].textRun &&
-    node.paragraph.elements[0].textRun.content
-  );
-}
-
-function getParagraphType(node) {
-  return node.paragraph.paragraphStyle.namedStyleType;
-}
-
-function getParagraphSpacingMode(node) {
-  return node.paragraph.paragraphStyle.spacingMode;
 }
 
 function TextFactory({

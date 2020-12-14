@@ -97,3 +97,11 @@ export function Button({ children, href }) {
     </a>
   );
 }
+
+export function Snippet({ children }) {
+  return (
+    <pre>
+      <code>{children}</code>
+    </pre>
+  );
+}
