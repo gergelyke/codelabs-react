@@ -1,6 +1,8 @@
 # codelabs-react
 
-A React library, that turns [Google-style codelabs](https://github.com/googlecodelabs/tools) into React components for easy customization.
+A bring-your-own-styles React library, that turns [Google-style codelabs](https://github.com/googlecodelabs/tools) into React components for easy customization.
+
+**Under active development. Do not use it in production for now.**
 
 ## API
 
