@@ -5,6 +5,7 @@ import {
   SideNavigation,
   Content,
   Main,
+  H1,
   H2,
   H3,
   H4,
@@ -33,6 +34,7 @@ export function Codelabs({ content, overrides = {} }) {
   const SideNavigationComponent = overrides.SideNavigation || SideNavigation;
   const ContentComponent = overrides.Content || Content;
   const MainComponent = overrides.Main || Main;
+  const H1Component = overrides.H1 || H1;
   const H2Component = overrides.H2 || H2;
   const H3Component = overrides.H3 || H3;
   const H4Component = overrides.H4 || H4;
@@ -97,8 +99,8 @@ export function Codelabs({ content, overrides = {} }) {
     };
   }
 
-  const pages = pageNodes.map((page) => {
-    return page.map((node) => {
+  const pages = pageNodes.map((page, index) => {
+    const reactPage = page.map((node) => {
       // we have text node, with possibly multiple elements
       if (node.paragraph) {
         // we can run into a few special cases based on type or other properties
@@ -146,6 +148,15 @@ export function Codelabs({ content, overrides = {} }) {
       }
       return;
     });
+
+    // +1, so it's a human readable page index
+    reactPage.unshift(
+      <H1Component>
+        {index + 1}. {headings[index]}
+      </H1Component>
+    );
+
+    return reactPage;
   });
 
   return (

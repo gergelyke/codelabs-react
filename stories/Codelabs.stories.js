@@ -8,7 +8,7 @@ import {
   ALIGN,
   StyledNavigationList,
 } from "baseui/header-navigation";
-import { H2, H3, H4, H5, H6 } from "baseui/typography";
+import { H1, H2, H3, H4, H5, H6 } from "baseui/typography";
 import { Block } from "baseui/block";
 import { Button } from "baseui/button";
 import { StyledLink } from "baseui/link";
@@ -84,6 +84,7 @@ export const BaseWeb = () => {
             </ul>
           );
         },
+        H1,
         H2,
         H3,
         H4,
