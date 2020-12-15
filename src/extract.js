@@ -1,12 +1,12 @@
-function extractHeadingNodes (content) {
-  return findElements(content, "HEADING_1")
+function extractHeadingNodes(content) {
+  return findElements(content, "HEADING_1");
 }
 
-function extractTitleNode (content) {
-  return findElements(content, "TITLE")[0]
+function extractTitleNode(content) {
+  return findElements(content, "TITLE")[0];
 }
 
-function extractPageNodes (content) {
+function extractPageNodes(content) {
   const headingNodes = extractHeadingNodes(content);
   return content.reduce((acc, current) => {
     const { startIndex = 0 } = current;
@@ -32,4 +32,4 @@ export default {
   extractHeadingNodes,
   extractTitleNode,
   extractPageNodes,
-}
+};

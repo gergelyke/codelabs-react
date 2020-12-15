@@ -19,7 +19,7 @@ import {
   CodeBox,
 } from "./components";
 
-import Extract from './extract';
+import Extract from "./extract";
 import Utils from "./utils";
 
 // TODO: this function is a mess, need to break it apart
@@ -95,61 +95,62 @@ export function Codelabs({ content, overrides = {} }) {
         );
       }
 
-      return <Text type={type} text={textRun.content} bold={Utils.isBold(textRun)} />;
+      return (
+        <Text type={type} text={textRun.content} bold={Utils.isBold(textRun)} />
+      );
     };
   }
 
-  const pages = pageNodes
-    .map((page) => {
-      return page.map((node) => {
-        // we have text node, with possibly multiple elements
-        if (node.paragraph) {
-          // we can run into a few special cases based on type or other properties
-          const type = Utils.getParagraphType(node);
+  const pages = pageNodes.map((page) => {
+    return page.map((node) => {
+      // we have text node, with possibly multiple elements
+      if (node.paragraph) {
+        // we can run into a few special cases based on type or other properties
+        const type = Utils.getParagraphType(node);
 
-          const pContent = node.paragraph.elements.map(
-            processParagraphElements({ type })
+        const pContent = node.paragraph.elements.map(
+          processParagraphElements({ type })
+        );
+
+        if (Utils.getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
+          return (
+            <ul>
+              <li>{pContent}</li>
+            </ul>
           );
-
-          if (Utils.getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
-            return (
-              <ul>
-                <li>{pContent}</li>
-              </ul>
-            );
-          }
-
-          return pContent;
         }
 
-        // we might have a codeblock, info or warning boxes
-        // they are all tables with the dimension 1x1
-        if (node.table) {
-          if (Utils.isInfoBox(node.table)) {
-            const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
-              processParagraphElements({ type: "NORMAL_TEXT" })
-            );
-            return <InfoBoxComponent>{pContent}</InfoBoxComponent>;
-          }
+        return pContent;
+      }
 
-          if (Utils.isWarningBox(node.table)) {
-            const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
-              processParagraphElements({ type: "NORMAL_TEXT" })
-            );
-            return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
-          }
-
-          if (Utils.isCodeBox(node.table)) {
-            return (
-              <CodeBoxComponent>
-                {Utils.getCode(node.table.tableRows[0].tableCells[0])}
-              </CodeBoxComponent>
-            );
-          }
+      // we might have a codeblock, info or warning boxes
+      // they are all tables with the dimension 1x1
+      if (node.table) {
+        if (Utils.isInfoBox(node.table)) {
+          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
+            processParagraphElements({ type: "NORMAL_TEXT" })
+          );
+          return <InfoBoxComponent>{pContent}</InfoBoxComponent>;
         }
-        return;
-      });
-    })
+
+        if (Utils.isWarningBox(node.table)) {
+          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
+            processParagraphElements({ type: "NORMAL_TEXT" })
+          );
+          return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
+        }
+
+        if (Utils.isCodeBox(node.table)) {
+          return (
+            <CodeBoxComponent>
+              {Utils.getCode(node.table.tableRows[0].tableCells[0])}
+            </CodeBoxComponent>
+          );
+        }
+      }
+      return;
+    });
+  });
 
   return (
     <PageComponent

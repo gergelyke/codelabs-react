@@ -141,5 +141,5 @@ export default {
   isInfoBox,
   isWarningBox,
   isCodeBox,
-  getCode
-}
+  getCode,
+};
