@@ -75,6 +75,51 @@ function isLink(textRun) {
   }
 }
 
+function TextFactory({
+  H2Component,
+  H3Component,
+  H4Component,
+  H5Component,
+  H6Component,
+  SpanComponent,
+}) {
+  return function ({ bold, type, text }) {
+    if (type === "HEADING_2") {
+      return <H2Component>{text}</H2Component>;
+    }
+
+    if (type === "HEADING_3") {
+      return <H3Component>{text}</H3Component>;
+    }
+
+    if (type === "HEADING_4") {
+      return <H4Component>{text}</H4Component>;
+    }
+
+    if (type === "HEADING_5") {
+      return <H5Component>{text}</H5Component>;
+    }
+
+    if (type === "HEADING_6") {
+      return <H6Component>{text}</H6Component>;
+    }
+
+    if (type === "NORMAL_TEXT") {
+      return (
+        <SpanComponent
+          style={{
+            fontWeight: bold ? "800" : "400",
+          }}
+        >
+          {text}
+        </SpanComponent>
+      );
+    }
+
+    return null;
+  };
+}
+
 // TABLES
 
 function isInfoBox(table) {
@@ -134,6 +179,8 @@ export default {
   getParagraphText,
   getParagraphType,
   getParagraphSpacingMode,
+  TextFactory,
+
   isCommandLineSnippet,
   isBold,
   isButton,
@@ -141,5 +188,6 @@ export default {
   isInfoBox,
   isWarningBox,
   isCodeBox,
+
   getCode,
 };

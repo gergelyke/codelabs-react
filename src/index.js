@@ -46,7 +46,7 @@ export function Codelabs({ content, overrides = {} }) {
   const WarningBoxComponent = overrides.WarningBox || WarningBox;
   const CodeBoxComponent = overrides.CodeBox || CodeBox;
 
-  const Text = TextFactory({
+  const Text = Utils.TextFactory({
     H2Component,
     H3Component,
     H4Component,
@@ -56,14 +56,10 @@ export function Codelabs({ content, overrides = {} }) {
     ButtonLinkComponent,
   });
 
-  const titleNode = Extract.extractTitleNode(content);
-  const headingNodes = Extract.extractHeadingNodes(content);
-  const pageNodes = Extract.extractPageNodes(content);
+  const title = Extract.extractTitle(content);
+  const headings = Extract.extractHeadings(content);
 
-  const title = Utils.getParagraphText(titleNode);
-  const headings = headingNodes
-    .map(Utils.getParagraphText)
-    .filter((heading) => heading);
+  const pageNodes = Extract.extractPageNodes(content);
 
   function processParagraphElements({ type }) {
     return function ({ textRun }) {
@@ -195,49 +191,4 @@ function Page({
       </MainComponent>
     </div>
   );
-}
-
-function TextFactory({
-  H2Component,
-  H3Component,
-  H4Component,
-  H5Component,
-  H6Component,
-  SpanComponent,
-}) {
-  return function ({ bold, type, text }) {
-    if (type === "HEADING_2") {
-      return <H2Component>{text}</H2Component>;
-    }
-
-    if (type === "HEADING_3") {
-      return <H3Component>{text}</H3Component>;
-    }
-
-    if (type === "HEADING_4") {
-      return <H4Component>{text}</H4Component>;
-    }
-
-    if (type === "HEADING_5") {
-      return <H5Component>{text}</H5Component>;
-    }
-
-    if (type === "HEADING_6") {
-      return <H6Component>{text}</H6Component>;
-    }
-
-    if (type === "NORMAL_TEXT") {
-      return (
-        <SpanComponent
-          style={{
-            fontWeight: bold ? "800" : "400",
-          }}
-        >
-          {text}
-        </SpanComponent>
-      );
-    }
-
-    return null;
-  };
 }

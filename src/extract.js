@@ -12,6 +12,13 @@ function extractTitle(content) {
   return Utils.getParagraphText(extractTitleNode(content));
 }
 
+function extractHeadings(content) {
+  const headingNodes = extractHeadingNodes(content);
+  return headingNodes
+    .map(Utils.getParagraphText)
+    .map((header) => header.trim());
+}
+
 function extractPageNodes(content) {
   const headingNodes = extractHeadingNodes(content);
   return content.reduce((acc, current) => {
@@ -36,6 +43,7 @@ function findElements(content, type) {
 
 export default {
   extractHeadingNodes,
+  extractHeadings,
 
   extractTitleNode,
   extractTitle,
