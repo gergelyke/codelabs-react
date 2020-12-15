@@ -1,9 +1,15 @@
+import Utils from "./utils";
+
 function extractHeadingNodes(content) {
   return findElements(content, "HEADING_1");
 }
 
 function extractTitleNode(content) {
   return findElements(content, "TITLE")[0];
+}
+
+function extractTitle(content) {
+  return Utils.getParagraphText(extractTitleNode(content));
 }
 
 function extractPageNodes(content) {
@@ -30,6 +36,9 @@ function findElements(content, type) {
 
 export default {
   extractHeadingNodes,
+
   extractTitleNode,
+  extractTitle,
+
   extractPageNodes,
 };
