@@ -14,11 +14,25 @@ import { Codelabs } from "codelabs-react";
     overrides: providing your own set of render functions or component overrides
 */
 <Codelabs
-  source={source}
+  content={content}
   overrides={{
-    Button,
-    Paragraph1,
-    Heading1,
+    Page,
+    Header,
+    SideNavigation,
+    Content,
+    Main,
+    H2,
+    H3,
+    H4,
+    H5,
+    H6,
+    Span,
+    ButtonLink,
+    Snippet,
+    Link,
+    InfoBox,
+    WarningBox,
+    CodeBox,
   }}
 />;
 ```

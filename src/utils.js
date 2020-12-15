@@ -19,7 +19,6 @@ function isEqual(object1, object2) {
 }
 
 // PARAGRAPHS
-
 export function getParagraphText(node) {
   try {
     return node.paragraph.elements[0].textRun.content;

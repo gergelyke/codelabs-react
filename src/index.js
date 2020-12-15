@@ -34,7 +34,7 @@ import {
 } from "./utils";
 
 // TODO: this function is a mess, need to break it apart
-function Codelabs({ content, overrides = {} }) {
+export function Codelabs({ content, overrides = {} }) {
   if (!content) throw new Error("Missing property: content");
 
   const [page, setPage] = useState(0);
@@ -71,7 +71,7 @@ function Codelabs({ content, overrides = {} }) {
   const headingNodes = findElements(content, "HEADING_1");
   const pageNodes = content.reduce((acc, current) => {
     const { startIndex = 0 } = current;
-    for (let i = headingNodes.length - 1; i  > -1; i -= 1) {
+    for (let i = headingNodes.length - 1; i > -1; i -= 1) {
       if (startIndex > headingNodes[i].startIndex) {
         acc[i] = acc[i] || [];
         acc[i].push(current);
@@ -270,5 +270,3 @@ function findElements(content, type) {
       node.paragraph && node.paragraph.paragraphStyle.namedStyleType === type
   );
 }
-
-export { Codelabs };
