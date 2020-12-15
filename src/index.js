@@ -12,6 +12,7 @@ import {
   H5,
   H6,
   Span,
+  Button,
   ButtonLink,
   Snippet,
   Link,
@@ -34,14 +35,17 @@ export function Codelabs({ content, overrides = {} }) {
   const SideNavigationComponent = overrides.SideNavigation || SideNavigation;
   const ContentComponent = overrides.Content || Content;
   const MainComponent = overrides.Main || Main;
+
   const H1Component = overrides.H1 || H1;
   const H2Component = overrides.H2 || H2;
   const H3Component = overrides.H3 || H3;
   const H4Component = overrides.H4 || H4;
   const H5Component = overrides.H5 || H5;
   const H6Component = overrides.H6 || H6;
+
   const SpanComponent = overrides.Span || Span;
   const ButtonLinkComponent = overrides.ButtonLink || ButtonLink;
+  const ButtonComponent = overrides.Button || Button;
   const SnippetComponent = overrides.Snippet || Snippet;
   const LinkComponent = overrides.Link || Link;
   const InfoBoxComponent = overrides.InfoBox || InfoBox;
@@ -163,7 +167,7 @@ export function Codelabs({ content, overrides = {} }) {
     <PageComponent
       title={title}
       navigationItems={headings}
-      page={pages[page]}
+      pages={pages}
       currentPage={page}
       setPage={setPage}
       overrides={{
@@ -171,6 +175,7 @@ export function Codelabs({ content, overrides = {} }) {
         SideNavigationComponent,
         ContentComponent,
         MainComponent,
+        ButtonComponent,
       }}
     />
   );
@@ -179,7 +184,7 @@ export function Codelabs({ content, overrides = {} }) {
 function Page({
   title,
   navigationItems,
-  page,
+  pages,
   currentPage,
   setPage,
   overrides: {
@@ -187,6 +192,7 @@ function Page({
     SideNavigationComponent,
     ContentComponent,
     MainComponent,
+    ButtonComponent,
   },
 }) {
   return (
@@ -198,7 +204,35 @@ function Page({
           setPage={setPage}
           currentPage={currentPage}
         />
-        <ContentComponent currentPage={currentPage}>{page}</ContentComponent>
+        <ContentComponent currentPage={currentPage}>
+          <>
+            {pages[currentPage]}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "32px",
+              }}
+            >
+              <ButtonComponent
+                disabled={currentPage - 1 < 0}
+                onClick={() => {
+                  setPage(currentPage - 1);
+                }}
+              >
+                Previous
+              </ButtonComponent>
+              <ButtonComponent
+                disabled={currentPage + 1 === pages.length}
+                onClick={() => {
+                  setPage(currentPage + 1);
+                }}
+              >
+                Next
+              </ButtonComponent>
+            </div>
+          </>
+        </ContentComponent>
       </MainComponent>
     </div>
   );

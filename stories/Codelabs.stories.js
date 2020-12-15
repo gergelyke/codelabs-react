@@ -97,6 +97,13 @@ export const BaseWeb = () => {
             </Block>
           );
         },
+        Button: (props) => {
+          return (
+            <Button size="large" {...props}>
+              {props.children}
+            </Button>
+          );
+        },
         ButtonLink: ({ children, href }) => {
           return (
             <Button

@@ -114,6 +114,14 @@ export function ButtonLink({ children, href }) {
   );
 }
 
+export function Button({ disabled, children, onClick }) {
+  return (
+    <button onClick={onClick} disabled={disabled}>
+      {children}
+    </button>
+  );
+}
+
 export function Link({ children, href }) {
   return (
     <a target="_blank" href={href}>
