@@ -1,7 +1,23 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@4.0.0
 workflows:
-  node-tests:
+  tests:
     jobs:
-      - node/test
+      - prettier
+      - test
+jobs:
+  prettier:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run prettier
+  test:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test
