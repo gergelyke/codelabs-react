@@ -19,7 +19,7 @@ function isEqual(object1, object2) {
 }
 
 // PARAGRAPHS
-export function getParagraphText(node) {
+function getParagraphText(node) {
   try {
     return node.paragraph.elements[0].textRun.content;
   } catch (ex) {
@@ -27,15 +27,15 @@ export function getParagraphText(node) {
   }
 }
 
-export function getParagraphType(node) {
+function getParagraphType(node) {
   return node.paragraph.paragraphStyle.namedStyleType;
 }
 
-export function getParagraphSpacingMode(node) {
+function getParagraphSpacingMode(node) {
   return node.paragraph.paragraphStyle.spacingMode;
 }
 
-export function isCommandLineSnippet(textRun) {
+function isCommandLineSnippet(textRun) {
   try {
     return textRun.textStyle.weightedFontFamily.fontFamily === "Consolas";
   } catch (e) {
@@ -43,7 +43,7 @@ export function isCommandLineSnippet(textRun) {
   }
 }
 
-export function isBold(textRun) {
+function isBold(textRun) {
   try {
     return textRun.textStyle.bold;
   } catch (e) {
@@ -51,7 +51,7 @@ export function isBold(textRun) {
   }
 }
 
-export function isButton(textRun) {
+function isButton(textRun) {
   try {
     return (
       textRun.textStyle &&
@@ -63,7 +63,7 @@ export function isButton(textRun) {
   }
 }
 
-export function isLink(textRun) {
+function isLink(textRun) {
   try {
     return (
       textRun.textStyle &&
@@ -77,7 +77,7 @@ export function isLink(textRun) {
 
 // TABLES
 
-export function isInfoBox(table) {
+function isInfoBox(table) {
   try {
     return (
       table.rows === 1 &&
@@ -94,7 +94,7 @@ export function isInfoBox(table) {
   }
 }
 
-export function isWarningBox(table) {
+function isWarningBox(table) {
   try {
     return (
       table.rows === 1 &&
@@ -111,7 +111,7 @@ export function isWarningBox(table) {
   }
 }
 
-export function isCodeBox(table) {
+function isCodeBox(table) {
   try {
     return (
       table.rows === 1 &&
@@ -124,8 +124,22 @@ export function isCodeBox(table) {
   }
 }
 
-export function getCode(tableCell) {
+function getCode(tableCell) {
   return tableCell.content.reduce((acc, current) => {
     return (acc += current.paragraph.elements[0].textRun.content);
   }, "");
+}
+
+export default {
+  getParagraphText,
+  getParagraphType,
+  getParagraphSpacingMode,
+  isCommandLineSnippet,
+  isBold,
+  isButton,
+  isLink,
+  isInfoBox,
+  isWarningBox,
+  isCodeBox,
+  getCode
 }

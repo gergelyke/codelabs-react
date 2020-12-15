@@ -19,19 +19,8 @@ import {
   CodeBox,
 } from "./components";
 
-import {
-  getParagraphText,
-  getParagraphType,
-  getParagraphSpacingMode,
-  isCommandLineSnippet,
-  isButton,
-  isLink,
-  isBold,
-  isInfoBox,
-  isWarningBox,
-  isCodeBox,
-  getCode,
-} from "./utils";
+import Extract from './extract';
+import Utils from "./utils";
 
 // TODO: this function is a mess, need to break it apart
 export function Codelabs({ content, overrides = {} }) {
@@ -67,30 +56,20 @@ export function Codelabs({ content, overrides = {} }) {
     ButtonLinkComponent,
   });
 
-  const titleNode = findElements(content, "TITLE")[0];
-  const headingNodes = findElements(content, "HEADING_1");
-  const pageNodes = content.reduce((acc, current) => {
-    const { startIndex = 0 } = current;
-    for (let i = headingNodes.length - 1; i > -1; i -= 1) {
-      if (startIndex > headingNodes[i].startIndex) {
-        acc[i] = acc[i] || [];
-        acc[i].push(current);
-        break;
-      }
-    }
-    return acc;
-  }, []);
+  const titleNode = Extract.extractTitleNode(content);
+  const headingNodes = Extract.extractHeadingNodes(content);
+  const pageNodes = Extract.extractPageNodes(content);
 
-  const title = getParagraphText(titleNode);
+  const title = Utils.getParagraphText(titleNode);
   const headings = headingNodes
-    .map(getParagraphText)
+    .map(Utils.getParagraphText)
     .filter((heading) => heading);
 
   function processParagraphElements({ type }) {
     return function ({ textRun }) {
       if (!textRun) return null;
 
-      if (isButton(textRun)) {
+      if (Utils.isButton(textRun)) {
         return (
           <p>
             <ButtonLinkComponent href={textRun.textStyle.link.url}>
@@ -100,7 +79,7 @@ export function Codelabs({ content, overrides = {} }) {
         );
       }
 
-      if (isCommandLineSnippet(textRun)) {
+      if (Utils.isCommandLineSnippet(textRun)) {
         return (
           <p>
             <SnippetComponent>{textRun.content}</SnippetComponent>
@@ -108,7 +87,7 @@ export function Codelabs({ content, overrides = {} }) {
         );
       }
 
-      if (isLink(textRun)) {
+      if (Utils.isLink(textRun)) {
         return (
           <LinkComponent href={textRun.textStyle.link.url}>
             {textRun.content}
@@ -116,7 +95,7 @@ export function Codelabs({ content, overrides = {} }) {
         );
       }
 
-      return <Text type={type} text={textRun.content} bold={isBold(textRun)} />;
+      return <Text type={type} text={textRun.content} bold={Utils.isBold(textRun)} />;
     };
   }
 
@@ -126,13 +105,13 @@ export function Codelabs({ content, overrides = {} }) {
         // we have text node, with possibly multiple elements
         if (node.paragraph) {
           // we can run into a few special cases based on type or other properties
-          const type = getParagraphType(node);
+          const type = Utils.getParagraphType(node);
 
           const pContent = node.paragraph.elements.map(
             processParagraphElements({ type })
           );
 
-          if (getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
+          if (Utils.getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
             return (
               <ul>
                 <li>{pContent}</li>
@@ -146,33 +125,31 @@ export function Codelabs({ content, overrides = {} }) {
         // we might have a codeblock, info or warning boxes
         // they are all tables with the dimension 1x1
         if (node.table) {
-          if (isInfoBox(node.table)) {
+          if (Utils.isInfoBox(node.table)) {
             const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
               processParagraphElements({ type: "NORMAL_TEXT" })
             );
             return <InfoBoxComponent>{pContent}</InfoBoxComponent>;
           }
 
-          if (isWarningBox(node.table)) {
+          if (Utils.isWarningBox(node.table)) {
             const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
               processParagraphElements({ type: "NORMAL_TEXT" })
             );
             return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
           }
 
-          if (isCodeBox(node.table)) {
+          if (Utils.isCodeBox(node.table)) {
             return (
               <CodeBoxComponent>
-                {getCode(node.table.tableRows[0].tableCells[0])}
+                {Utils.getCode(node.table.tableRows[0].tableCells[0])}
               </CodeBoxComponent>
             );
           }
         }
         return;
       });
-      // removing empty pages, if any
     })
-    .filter((page) => page);
 
   return (
     <PageComponent
@@ -262,11 +239,4 @@ function TextFactory({
 
     return null;
   };
-}
-
-function findElements(content, type) {
-  return content.filter(
-    (node) =>
-      node.paragraph && node.paragraph.paragraphStyle.namedStyleType === type
-  );
 }
