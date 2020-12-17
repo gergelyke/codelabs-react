@@ -1,3 +1,5 @@
+import React from "react";
+
 const infoColor = { red: 0.8509804, green: 0.91764706, blue: 0.827451 };
 const warningColor = { red: 0.9882353, green: 0.8980392, blue: 0.8039216 };
 
