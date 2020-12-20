@@ -62,6 +62,10 @@ export function Codelabs({ content, overrides = {} }) {
     ButtonLinkComponent,
   });
 
+  console.log(Extract.parse(content));
+
+  return <span>test</span>;
+
   const title = Extract.extractTitle(content);
   const headings = Extract.extractHeadings(content);
 
