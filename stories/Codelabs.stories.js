@@ -90,9 +90,16 @@ export const BaseWeb = () => {
         H4,
         H5,
         H6,
-        Span: ({ children }) => {
+        ListItem: ({ children }) => {
           return (
-            <Block $as="span" font="font400">
+            <Block $as="li" font="font300">
+              {children}
+            </Block>
+          );
+        },
+        Parapgraph: ({ children }) => {
+          return (
+            <Block $as="p" font="font300">
               {children}
             </Block>
           );
@@ -115,7 +122,20 @@ export const BaseWeb = () => {
           );
         },
         Link: ({ children, href }) => {
-          return <StyledLink href={href}>{children}</StyledLink>;
+          return (
+            <StyledLink target="_blank" href={href}>
+              {children}
+            </StyledLink>
+          );
+        },
+        CodeBox: ({ children }) => {
+          return (
+            <Block overflow="scroll">
+              <Block $as="pre" padding="10px" margin="0">
+                {children}
+              </Block>
+            </Block>
+          );
         },
         InfoBox: ({ children }) => {
           return (

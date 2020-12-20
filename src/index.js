@@ -19,10 +19,11 @@ import {
   InfoBox,
   WarningBox,
   CodeBox,
+  Parapgraph,
+  ListItem,
 } from "./components";
 
 import Extract from "./extract";
-import Utils from "./utils";
 
 // TODO: this function is a mess, need to break it apart
 export function Codelabs({ content, overrides = {} }) {
@@ -42,8 +43,10 @@ export function Codelabs({ content, overrides = {} }) {
   const H4Component = overrides.H4 || H4;
   const H5Component = overrides.H5 || H5;
   const H6Component = overrides.H6 || H6;
-
   const SpanComponent = overrides.Span || Span;
+  const ParapgraphComponent = overrides.Parapgraph || Parapgraph;
+  const ListItemComponent = overrides.ListItem || ListItem;
+
   const ButtonLinkComponent = overrides.ButtonLink || ButtonLink;
   const ButtonComponent = overrides.Button || Button;
   const SnippetComponent = overrides.Snippet || Snippet;
@@ -52,125 +55,67 @@ export function Codelabs({ content, overrides = {} }) {
   const WarningBoxComponent = overrides.WarningBox || WarningBox;
   const CodeBoxComponent = overrides.CodeBox || CodeBox;
 
-  const Text = Utils.TextFactory({
-    H2Component,
-    H3Component,
-    H4Component,
-    H5Component,
-    H6Component,
-    SpanComponent,
-    ButtonLinkComponent,
-  });
+  const parsedContent = Extract.parse(content);
 
-  console.log(Extract.parse(content));
+  const Mapper = {
+    p: (props) => <ParapgraphComponent>{props.children}</ParapgraphComponent>,
+    span: (props) => <SpanComponent>{props.children}</SpanComponent>,
+    h2: (props) => <H2Component>{props.children}</H2Component>,
+    h3: (props) => <H3Component>{props.children}</H3Component>,
+    h4: (props) => <H4Component>{props.children}</H4Component>,
+    h5: (props) => <H5Component>{props.children}</H5Component>,
+    h6: (props) => <H6Component>{props.children}</H6Component>,
+    li: (props) => <ListItemComponent>{props.children}</ListItemComponent>,
+    infobox: (props) => <InfoBoxComponent>{props.children}</InfoBoxComponent>,
+    warningbox: (props) => (
+      <WarningBoxComponent>{props.children}</WarningBoxComponent>
+    ),
+    a: (props) => <LinkComponent {...props}>{props.children}</LinkComponent>,
+    buttonlink: (props) => (
+      <ButtonLinkComponent {...props}>{props.children}</ButtonLinkComponent>
+    ),
+    commandlinesnippet: (props) => (
+      <SnippetComponent {...props}>{props.children}</SnippetComponent>
+    ),
+    codebox: (props) => (
+      <CodeBoxComponent {...props}>{props.children}</CodeBoxComponent>
+    ),
+  };
 
-  return <span>test</span>;
+  const pages = parsedContent.pages.map((page) => {
+    return page.map((node) => {
+      switch (node.type) {
+        case "p":
+          return MapNode({ node, tag: "p", Mapper });
+        case "h2":
+          return MapNode({ node, tag: "h2", Mapper });
+        case "h3":
+          return MapNode({ node, tag: "h3", Mapper });
+        case "h4":
+          return MapNode({ node, tag: "h4", Mapper });
+        case "h5":
+          return MapNode({ node, tag: "h5", Mapper });
+        case "h6":
+          return MapNode({ node, tag: "h6", Mapper });
+        case "li":
+          return MapNode({ node, tag: "li", Mapper });
+        case "infobox":
+          return MapNode({ node: node.content, tag: "infobox", Mapper });
+        case "warningbox":
+          return MapNode({ node: node.content, tag: "warningbox", Mapper });
+        case "codebox":
+          return MapNode({ node: node, tag: "codebox", Mapper });
 
-  const title = Extract.extractTitle(content);
-  const headings = Extract.extractHeadings(content);
-
-  const pageNodes = Extract.extractPageNodes(content);
-
-  function processParagraphElements({ type }) {
-    return function ({ textRun }) {
-      if (!textRun) return null;
-
-      if (Utils.isButton(textRun)) {
-        return (
-          <p>
-            <ButtonLinkComponent href={textRun.textStyle.link.url}>
-              {textRun.content}
-            </ButtonLinkComponent>
-          </p>
-        );
+        default:
+          return null;
       }
-
-      if (Utils.isCommandLineSnippet(textRun)) {
-        return (
-          <p>
-            <SnippetComponent>{textRun.content}</SnippetComponent>
-          </p>
-        );
-      }
-
-      if (Utils.isLink(textRun)) {
-        return (
-          <LinkComponent href={textRun.textStyle.link.url}>
-            {textRun.content}
-          </LinkComponent>
-        );
-      }
-
-      return (
-        <Text type={type} text={textRun.content} bold={Utils.isBold(textRun)} />
-      );
-    };
-  }
-
-  const pages = pageNodes.map((page, index) => {
-    const reactPage = page.map((node) => {
-      // we have text node, with possibly multiple elements
-      if (node.paragraph) {
-        // we can run into a few special cases based on type or other properties
-        const type = Utils.getParagraphType(node);
-
-        const pContent = node.paragraph.elements.map(
-          processParagraphElements({ type })
-        );
-
-        if (Utils.getParagraphSpacingMode(node) === "COLLAPSE_LISTS") {
-          return (
-            <ul>
-              <li>{pContent}</li>
-            </ul>
-          );
-        }
-
-        return pContent;
-      }
-
-      // we might have a codeblock, info or warning boxes
-      // they are all tables with the dimension 1x1
-      if (node.table) {
-        if (Utils.isInfoBox(node.table)) {
-          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
-            processParagraphElements({ type: "NORMAL_TEXT" })
-          );
-          return <InfoBoxComponent>{pContent}</InfoBoxComponent>;
-        }
-
-        if (Utils.isWarningBox(node.table)) {
-          const pContent = node.table.tableRows[0].tableCells[0].content[0].paragraph.elements.map(
-            processParagraphElements({ type: "NORMAL_TEXT" })
-          );
-          return <WarningBoxComponent>{pContent}</WarningBoxComponent>;
-        }
-
-        if (Utils.isCodeBox(node.table)) {
-          return (
-            <CodeBoxComponent>
-              {Utils.getCode(node.table.tableRows[0].tableCells[0])}
-            </CodeBoxComponent>
-          );
-        }
-      }
-      return;
     });
-
-    // +1, so it's a human readable page index
-    reactPage.unshift(
-      <H1Component>
-        {index + 1}. {headings[index]}
-      </H1Component>
-    );
-
-    return reactPage;
   });
 
   return (
     <PageComponent
-      title={title}
-      navigationItems={headings}
+      title={parsedContent.title}
+      navigationItems={parsedContent.headings}
       pages={pages}
       currentPage={page}
       setPage={setPage}
@@ -180,8 +125,52 @@ export function Codelabs({ content, overrides = {} }) {
         ContentComponent,
         MainComponent,
         ButtonComponent,
+        H1Component,
       }}
     />
+  );
+}
+
+function MapNode({ tag, node, Mapper }) {
+  const Tag = Mapper[tag];
+  if (!Tag) return null;
+
+  if (tag === "codebox") {
+    return <Mapper.codebox>{node.content}</Mapper.codebox>;
+  }
+
+  return (
+    <Tag>
+      {node.content.map((element) => {
+        if (!element) return;
+
+        if (element.type === "link") {
+          return (
+            <Mapper.a target="_blank" {...element}>
+              {element.content}
+            </Mapper.a>
+          );
+        }
+
+        if (element.type === "button-link") {
+          return (
+            <Mapper.buttonlink target="_blank" {...element}>
+              {element.content}
+            </Mapper.buttonlink>
+          );
+        }
+
+        if (element.type === "command-line-snippet") {
+          return (
+            <Mapper.commandlinesnippet>
+              {element.content}
+            </Mapper.commandlinesnippet>
+          );
+        }
+
+        return <span>{element.content}</span>;
+      })}
+    </Tag>
   );
 }
 
@@ -197,6 +186,7 @@ function Page({
     ContentComponent,
     MainComponent,
     ButtonComponent,
+    H1Component,
   },
 }) {
   return (
@@ -210,6 +200,9 @@ function Page({
         />
         <ContentComponent currentPage={currentPage}>
           <>
+            <H1Component>
+              {currentPage + 1}. {navigationItems[currentPage]}
+            </H1Component>
             {pages[currentPage]}
             <div
               style={{
