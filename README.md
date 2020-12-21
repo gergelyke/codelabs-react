@@ -4,6 +4,11 @@ A bring-your-own-styles React library, that turns [Google-style codelabs](https:
 
 You'll need to get the API response from the Google APIs yourself. This project does not handle authentication to the Google APIs. Check out [this guide](https://developers.google.com/docs/api/quickstart/js) if you need help with it.
 
+**Live demo:**
+
+- [With the default components](https://codelabs-react.netlify.app/?path=/story/codelabs-example--default)
+- [With overrides using Base Web](https://codelabs-react.netlify.app/?path=/story/codelabs-example--base-web)
+
 ## API
 
 ```js
