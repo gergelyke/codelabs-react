@@ -98,6 +98,14 @@ export function Span({ children }) {
   return <span>{children}</span>;
 }
 
+export function Parapgraph({ children }) {
+  return <p>{children}</p>;
+}
+
+export function ListItem({ children }) {
+  return <li>{children}</li>;
+}
+
 export function ButtonLink({ children, href }) {
   return (
     <a
