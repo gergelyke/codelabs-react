@@ -2,6 +2,8 @@
 
 A bring-your-own-styles React library, that turns [Google-style codelabs](https://github.com/googlecodelabs/tools/blob/master/FORMAT-GUIDE.md) into React components for easy customization.
 
+You'll need to get the API response from the Google APIs yourself. This project does not handle authentication to the Google APIs. Check out [this guide](https://developers.google.com/docs/api/quickstart/js) if you need help with it.
+
 ## API
 
 ```js
