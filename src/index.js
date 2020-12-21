@@ -82,29 +82,79 @@ export function Codelabs({ content, overrides = {} }) {
     ),
   };
 
-  const pages = parsedContent.pages.map((page) => {
-    return page.map((node) => {
+  const pages = parsedContent.pages.map((page, pageIndex) => {
+    return page.map((node, nodeIndex) => {
       switch (node.type) {
         case "p":
-          return MapNode({ node, tag: "p", Mapper });
+          return MapNode({
+            node,
+            tag: "p",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "h2":
-          return MapNode({ node, tag: "h2", Mapper });
+          return MapNode({
+            node,
+            tag: "h2",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "h3":
-          return MapNode({ node, tag: "h3", Mapper });
+          return MapNode({
+            node,
+            tag: "h3",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "h4":
-          return MapNode({ node, tag: "h4", Mapper });
+          return MapNode({
+            node,
+            tag: "h4",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "h5":
-          return MapNode({ node, tag: "h5", Mapper });
+          return MapNode({
+            node,
+            tag: "h5",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "h6":
-          return MapNode({ node, tag: "h6", Mapper });
+          return MapNode({
+            node,
+            tag: "h6",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "li":
-          return MapNode({ node, tag: "li", Mapper });
+          return MapNode({
+            node,
+            tag: "li",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "infobox":
-          return MapNode({ node: node.content, tag: "infobox", Mapper });
+          return MapNode({
+            node: node.content,
+            tag: "infobox",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "warningbox":
-          return MapNode({ node: node.content, tag: "warningbox", Mapper });
+          return MapNode({
+            node: node.content,
+            tag: "warningbox",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
         case "codebox":
-          return MapNode({ node: node, tag: "codebox", Mapper });
+          return MapNode({
+            node: node,
+            tag: "codebox",
+            Mapper,
+            key: `${pageIndex}-${nodeIndex}`,
+          });
 
         default:
           return null;
@@ -131,12 +181,12 @@ export function Codelabs({ content, overrides = {} }) {
   );
 }
 
-function MapNode({ tag, node, Mapper }) {
+function MapNode({ tag, node, Mapper, key }) {
   const Tag = Mapper[tag];
   if (!Tag) return null;
 
   if (tag === "codebox") {
-    return <Mapper.codebox>{node.content}</Mapper.codebox>;
+    return <Mapper.codebox key={key}>{node.content}</Mapper.codebox>;
   }
 
   return (
@@ -146,7 +196,7 @@ function MapNode({ tag, node, Mapper }) {
 
         if (element.type === "link") {
           return (
-            <Mapper.a target="_blank" {...element}>
+            <Mapper.a key={key} target="_blank" {...element}>
               {element.content}
             </Mapper.a>
           );
@@ -154,7 +204,7 @@ function MapNode({ tag, node, Mapper }) {
 
         if (element.type === "button-link") {
           return (
-            <Mapper.buttonlink target="_blank" {...element}>
+            <Mapper.buttonlink key={key} target="_blank" {...element}>
               {element.content}
             </Mapper.buttonlink>
           );
@@ -162,13 +212,13 @@ function MapNode({ tag, node, Mapper }) {
 
         if (element.type === "command-line-snippet") {
           return (
-            <Mapper.commandlinesnippet>
+            <Mapper.commandlinesnippet key={key}>
               {element.content}
             </Mapper.commandlinesnippet>
           );
         }
 
-        return <span>{element.content}</span>;
+        return <span key={key}>{element.content}</span>;
       })}
     </Tag>
   );
