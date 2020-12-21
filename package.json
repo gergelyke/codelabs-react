@@ -9,7 +9,8 @@
     "build-storybook": "build-storybook",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "build": "babel ./src --out-dir ./dist --ignore **.test.js"
+    "build": "babel ./src --out-dir ./dist --ignore **.test.js",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "",
