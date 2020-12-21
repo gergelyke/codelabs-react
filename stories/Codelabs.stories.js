@@ -34,7 +34,7 @@ export const BaseWeb = () => {
           return (
             <Block
               flex="1"
-              maxWidth="1200px"
+              maxWidth="600px"
               padding="16px"
               overrides={{
                 Block: {
@@ -128,9 +128,34 @@ export const BaseWeb = () => {
             </StyledLink>
           );
         },
+        Snippet: ({ children }) => {
+          return (
+            <Block
+              overrides={{
+                Block: {
+                  style: {
+                    overflowX: "scroll",
+                  },
+                },
+              }}
+            >
+              <Block $as="pre" padding="10px" margin="0">
+                {children}
+              </Block>
+            </Block>
+          );
+        },
         CodeBox: ({ children }) => {
           return (
-            <Block overflow="scroll">
+            <Block
+              overrides={{
+                Block: {
+                  style: {
+                    overflowX: "scroll",
+                  },
+                },
+              }}
+            >
               <Block $as="pre" padding="10px" margin="0">
                 {children}
               </Block>

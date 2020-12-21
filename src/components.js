@@ -48,7 +48,7 @@ export function Content({ children }) {
     <section
       style={{
         flex: 1,
-        maxWidth: "1200px",
+        maxWidth: "600px",
       }}
     >
       {children}
