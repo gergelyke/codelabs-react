@@ -11,7 +11,6 @@ import {
   H4,
   H5,
   H6,
-  Span,
   Button,
   ButtonLink,
   Snippet,
@@ -43,7 +42,6 @@ export function Codelabs({ content, overrides = {} }) {
   const H4Component = overrides.H4 || H4;
   const H5Component = overrides.H5 || H5;
   const H6Component = overrides.H6 || H6;
-  const SpanComponent = overrides.Span || Span;
   const ParapgraphComponent = overrides.Parapgraph || Parapgraph;
   const ListItemComponent = overrides.ListItem || ListItem;
 
@@ -59,7 +57,6 @@ export function Codelabs({ content, overrides = {} }) {
 
   const Mapper = {
     p: (props) => <ParapgraphComponent>{props.children}</ParapgraphComponent>,
-    span: (props) => <SpanComponent>{props.children}</SpanComponent>,
     h2: (props) => <H2Component>{props.children}</H2Component>,
     h3: (props) => <H3Component>{props.children}</H3Component>,
     h4: (props) => <H4Component>{props.children}</H4Component>,

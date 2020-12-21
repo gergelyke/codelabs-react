@@ -94,10 +94,6 @@ export function H6({ children }) {
   return <h6>{children}</h6>;
 }
 
-export function Span({ children }) {
-  return <span>{children}</span>;
-}
-
 export function Parapgraph({ children }) {
   return <p>{children}</p>;
 }
