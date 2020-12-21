@@ -42,6 +42,9 @@
   "jest": {
     "setupFilesAfterEnv": [
       "./setup-tests.js"
+    ],
+    "testPathIgnorePatterns": [
+      "dist"
     ]
   },
   "dependencies": {}
