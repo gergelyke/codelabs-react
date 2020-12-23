@@ -25,7 +25,7 @@ import {
 import Extract from "./extract";
 
 // TODO: this function is a mess, need to break it apart
-export function Codelabs({ content, overrides = {} }) {
+export function Codelabs({ content, overrides = {}, onPageChange = () => {} }) {
   if (!content) throw new Error("Missing property: content");
 
   const [page, setPage] = useState(0);
@@ -166,6 +166,7 @@ export function Codelabs({ content, overrides = {} }) {
       pages={pages}
       currentPage={page}
       setPage={setPage}
+      onPageChange={onPageChange}
       overrides={{
         HeaderComponent,
         SideNavigationComponent,
@@ -227,6 +228,7 @@ function Page({
   pages,
   currentPage,
   setPage,
+  onPageChange,
   overrides: {
     HeaderComponent,
     SideNavigationComponent,
@@ -244,6 +246,7 @@ function Page({
           items={navigationItems}
           setPage={setPage}
           currentPage={currentPage}
+          onPageChange={onPageChange}
         />
         <ContentComponent currentPage={currentPage}>
           <>
@@ -262,6 +265,7 @@ function Page({
                 disabled={currentPage - 1 < 0}
                 onClick={() => {
                   setPage(currentPage - 1);
+                  onPageChange({ nextPage: currentPage - 1 });
                 }}
               >
                 Previous
@@ -270,6 +274,7 @@ function Page({
                 disabled={currentPage + 1 === pages.length}
                 onClick={() => {
                   setPage(currentPage + 1);
+                  onPageChange({ nextPage: currentPage + 1 });
                 }}
               >
                 Next

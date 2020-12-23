@@ -21,6 +21,8 @@ import { Codelabs } from "codelabs-react";
 <Codelabs
   // required, response from the google docs api
   content={content}
+  // optional, if your app needs to know about a page change
+  onPageChange={({ page }) => {}}
   // optional, used for styling
   overrides={{
     // Layout overrides
