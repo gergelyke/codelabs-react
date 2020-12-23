@@ -29,6 +29,9 @@ export const BaseWeb = () => {
   return (
     <Codelabs
       content={source.content}
+      onPageChange={({ page }) => {
+        console.log(`Changed to page ${page}`);
+      }}
       overrides={{
         Content: ({ children }) => {
           return (
@@ -55,7 +58,7 @@ export const BaseWeb = () => {
             </HeaderNavigation>
           );
         },
-        SideNavigation: ({ items, setPage, currentPage }) => {
+        SideNavigation: ({ items, setPage, currentPage, onPageChange }) => {
           return (
             <ul>
               {items.map((item, index) => {
@@ -64,6 +67,7 @@ export const BaseWeb = () => {
                     style={{ cursor: "pointer" }}
                     onClick={() => {
                       setPage(index);
+                      onPageChange({ nextPage: index });
                     }}
                   >
                     <ListItem
