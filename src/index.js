@@ -120,8 +120,10 @@ function MapNode({ tag, node, Mapper, key }) {
 
   return (
     <Tag>
-      {node.content.map((element) => {
+      {node.content.map((element, elementIndex) => {
         if (!element) return;
+
+        key = `${key}-${elementIndex}`;
 
         if (element.type === "link") {
           return (
