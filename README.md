@@ -22,13 +22,14 @@ import { Codelabs } from "codelabs-react";
   // required, response from the google docs api
   content={content}
   // optional, if your app needs to know about a page change
-  onPageChange={({ page }) => {}}
+  onPageChange={({ nextPage }) => {}}
   // optional, used for styling
   overrides={{
     // Layout overrides
     Header: ({ title }) => React.Component,
     Content: ({ children }) => React.Component,
-    SideNavigation: ({ items, setPage, currentPage }) => React.Component,
+    SideNavigation: ({ items, setPage, currentPage, onPageChange }) =>
+      React.Component,
     Button: ({ children }) => React.Component,
 
     // Text overrides
