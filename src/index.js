@@ -25,10 +25,15 @@ import {
 import Extract from "./extract";
 
 // TODO: this function is a mess, need to break it apart
-export function Codelabs({ content, overrides = {}, onPageChange = () => {} }) {
+export function Codelabs({
+  content,
+  overrides = {},
+  onPageChange = () => {},
+  initialPage = 0,
+}) {
   if (!content) throw new Error("Missing property: content");
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(initialPage);
 
   const PageComponent = overrides.Page || Page;
   const HeaderComponent = overrides.Header || Header;

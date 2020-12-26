@@ -23,6 +23,8 @@ import { Codelabs } from "codelabs-react";
   content={content}
   // optional, if your app needs to know about a page change
   onPageChange={({ nextPage }) => {}}
+  // optional, if you want to set the initial page to show
+  initialPage={Number}
   // optional, used for styling
   overrides={{
     // Layout overrides
