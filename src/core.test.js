@@ -14,7 +14,7 @@ import { content } from "../stories/document-1607876232180.json";
 import expected from "./__test/expected.json";
 import Extract from "./extract";
 
-import { Default } from "../stories/Codelabs.stories";
+import { Default, BaseWeb } from "../stories/Codelabs.stories";
 
 afterEach(cleanup);
 
@@ -26,6 +26,11 @@ test("Extract parses the document", () => {
 test("Page can be navigated using the side navigation", async () => {
   render(<Default />);
   fireEvent.click(screen.getByText("Getting set up"));
+  expect(screen.getByText("2. Getting set up")).toBeInTheDocument();
+});
+
+test("Initial page is set to Page 2", async () => {
+  render(<BaseWeb />);
   expect(screen.getByText("2. Getting set up")).toBeInTheDocument();
 });
 

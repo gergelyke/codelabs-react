@@ -32,6 +32,7 @@ export const BaseWeb = () => {
       onPageChange={({ nextPage }) => {
         console.log(`Changed to page ${nextPage}`);
       }}
+      initialPage={1}
       overrides={{
         Content: ({ children }) => {
           return (
