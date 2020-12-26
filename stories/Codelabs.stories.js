@@ -29,8 +29,8 @@ export const BaseWeb = () => {
   return (
     <Codelabs
       content={source.content}
-      onPageChange={({ page }) => {
-        console.log(`Changed to page ${page}`);
+      onPageChange={({ nextPage }) => {
+        console.log(`Changed to page ${nextPage}`);
       }}
       overrides={{
         Content: ({ children }) => {

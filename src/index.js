@@ -82,11 +82,14 @@ export function Codelabs({ content, overrides = {}, onPageChange = () => {} }) {
   const pages = parsedContent.pages.map((page, pageIndex) => {
     return page.map((node, nodeIndex) => {
       return MapNode({
-        node: (node.type === 'warningbox' || node.type === 'infobox') ? node.content : node,
+        node:
+          node.type === "warningbox" || node.type === "infobox"
+            ? node.content
+            : node,
         tag: node.type,
         Mapper,
         key: `${pageIndex}-${nodeIndex}`,
-      })
+      });
     });
   });
 
