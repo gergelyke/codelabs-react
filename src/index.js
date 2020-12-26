@@ -81,81 +81,12 @@ export function Codelabs({ content, overrides = {}, onPageChange = () => {} }) {
 
   const pages = parsedContent.pages.map((page, pageIndex) => {
     return page.map((node, nodeIndex) => {
-      switch (node.type) {
-        case "p":
-          return MapNode({
-            node,
-            tag: "p",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "h2":
-          return MapNode({
-            node,
-            tag: "h2",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "h3":
-          return MapNode({
-            node,
-            tag: "h3",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "h4":
-          return MapNode({
-            node,
-            tag: "h4",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "h5":
-          return MapNode({
-            node,
-            tag: "h5",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "h6":
-          return MapNode({
-            node,
-            tag: "h6",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "li":
-          return MapNode({
-            node,
-            tag: "li",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "infobox":
-          return MapNode({
-            node: node.content,
-            tag: "infobox",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "warningbox":
-          return MapNode({
-            node: node.content,
-            tag: "warningbox",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-        case "codebox":
-          return MapNode({
-            node: node,
-            tag: "codebox",
-            Mapper,
-            key: `${pageIndex}-${nodeIndex}`,
-          });
-
-        default:
-          return null;
-      }
+      return MapNode({
+        node: (node.type === 'warningbox' || node.type === 'infobox') ? node.content : node,
+        tag: node.type,
+        Mapper,
+        key: `${pageIndex}-${nodeIndex}`,
+      })
     });
   });
 
