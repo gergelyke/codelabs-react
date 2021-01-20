@@ -258,7 +258,7 @@ function getItalic(element) {
 }
 
 function getParagraphText(node) {
-  return node?.paragraph?.elements[0]?.textRun?.content;
+  return node?.paragraph?.elements[0]?.textRun?.content ?? "";
 }
 
 export default {
