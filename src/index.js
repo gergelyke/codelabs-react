@@ -157,7 +157,17 @@ function MapNode({ tag, node, Mapper, key }) {
           );
         }
 
-        return <span key={key}>{element.content}</span>;
+        return (
+          <span
+            style={{
+              fontWeight: element.bold ? "bold" : "normal",
+              fontStyle: element.italic ? "italic" : "normal",
+            }}
+            key={key}
+          >
+            {element.content}
+          </span>
+        );
       })}
     </Tag>
   );

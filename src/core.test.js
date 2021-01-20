@@ -8,10 +8,7 @@ import {
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import assert from "assert";
-
 import { content } from "../stories/document-1607876232180.json";
-import expected from "./__test/expected.json";
 import Extract from "./extract";
 
 import { Default, BaseWeb } from "../stories/Codelabs.stories";
@@ -20,7 +17,7 @@ afterEach(cleanup);
 
 test("Extract parses the document", () => {
   const tree = Extract.parse(content);
-  assert.deepStrictEqual(JSON.parse(JSON.stringify(tree)), expected);
+  expect(tree).toMatchSnapshot();
 });
 
 test("Page can be navigated using the side navigation", async () => {
