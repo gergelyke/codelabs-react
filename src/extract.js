@@ -41,7 +41,7 @@ function parseParagraph(paragraph) {
       }
 
       return {
-        content: element.textRun.content,
+        content: element?.textRun?.content,
         ...getElementProperties(element),
         ...getBold(element),
         ...getItalic(element),
@@ -156,14 +156,10 @@ function getParagraphType(paragraph) {
 
 function getLinkProperties(textRun) {
   try {
-    if (
-      textRun.textStyle &&
-      textRun.textStyle.foregroundColor &&
-      textRun.textStyle.link
-    ) {
+    if (textRun?.textStyle?.foregroundColor && textRun?.textStyle?.link) {
       return {
         type: "link",
-        href: textRun.textStyle.link.url,
+        href: textRun?.textStyle?.link?.url,
       };
     }
   } catch (e) {
@@ -173,14 +169,10 @@ function getLinkProperties(textRun) {
 
 function getButtonLinkProperties(textRun) {
   try {
-    if (
-      textRun.textStyle &&
-      textRun.textStyle.backgroundColor &&
-      textRun.textStyle.link
-    ) {
+    if (textRun?.textStyle?.backgroundColor && textRun?.textStyle?.link) {
       return {
         type: "button-link",
-        href: textRun.textStyle.link.url,
+        href: textRun?.textStyle?.link?.url,
       };
     }
   } catch (e) {
@@ -189,15 +181,12 @@ function getButtonLinkProperties(textRun) {
 }
 
 function getCommandLineSnippet(textRun) {
-  try {
-    if (textRun.textStyle.weightedFontFamily.fontFamily === "Consolas") {
-      return {
-        type: "command-line-snippet",
-      };
-    }
-  } catch (e) {
-    return undefined;
+  if (textRun?.textStyle?.weightedFontFamily?.fontFamily === "Consolas") {
+    return {
+      type: "command-line-snippet",
+    };
   }
+  return undefined;
 }
 
 function extractHeadingNodes(content) {
@@ -252,36 +241,24 @@ function extractPageNodes(content) {
 function findElements(content, type) {
   return content.filter(
     (node) =>
-      node.paragraph && node.paragraph.paragraphStyle.namedStyleType === type
+      node.paragraph && node?.paragraph?.paragraphStyle?.namedStyleType === type
   );
 }
 
 function getBold(element) {
-  try {
-    return {
-      bold: !!element.textRun.textStyle.bold,
-    };
-  } catch (ex) {
-    return false;
-  }
+  return {
+    bold: !!element?.textRun?.textStyle?.bold,
+  };
 }
 
 function getItalic(element) {
-  try {
-    return {
-      italic: !!element.textRun.textStyle.italic,
-    };
-  } catch (ex) {
-    return false;
-  }
+  return {
+    italic: !!element?.textRun?.textStyle?.italic,
+  };
 }
 
 function getParagraphText(node) {
-  try {
-    return node.paragraph.elements[0].textRun.content;
-  } catch (ex) {
-    return "";
-  }
+  return node?.paragraph?.elements[0]?.textRun?.content;
 }
 
 export default {
