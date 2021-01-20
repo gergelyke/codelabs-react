@@ -171,7 +171,7 @@ export const BaseWeb = () => {
           return (
             <Notification
               overrides={{
-                Body: { style: { width: "auto" } },
+                Body: { style: { width: "auto", lineHeight: "2em" } },
               }}
             >
               {children}
@@ -183,7 +183,7 @@ export const BaseWeb = () => {
             <Notification
               kind="warning"
               overrides={{
-                Body: { style: { width: "auto" } },
+                Body: { style: { width: "auto", lineHeight: "2em" } },
               }}
             >
               {children}

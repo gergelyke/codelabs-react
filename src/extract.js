@@ -44,6 +44,7 @@ function parseParagraph(paragraph) {
         content: element.textRun.content,
         ...getElementProperties(element),
         ...getBold(element),
+        ...getItalic(element),
       };
     }),
   };
@@ -258,6 +259,12 @@ function findElements(content, type) {
 function getBold(element) {
   return {
     bold: !!element.textRun.textStyle.bold,
+  };
+}
+
+function getItalic(element) {
+  return {
+    italic: !!element.textRun.textStyle.italic,
   };
 }
 
