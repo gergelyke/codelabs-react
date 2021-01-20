@@ -257,19 +257,31 @@ function findElements(content, type) {
 }
 
 function getBold(element) {
-  return {
-    bold: !!element.textRun.textStyle.bold,
-  };
+  try {
+    return {
+      bold: !!element.textRun.textStyle.bold,
+    };
+  } catch (ex) {
+    return false;
+  }
 }
 
 function getItalic(element) {
-  return {
-    italic: !!element.textRun.textStyle.italic,
-  };
+  try {
+    return {
+      italic: !!element.textRun.textStyle.italic,
+    };
+  } catch (ex) {
+    return false;
+  }
 }
 
 function getParagraphText(node) {
-  return node.paragraph.elements[0].textRun.content;
+  try {
+    return node.paragraph.elements[0].textRun.content;
+  } catch (ex) {
+    return "";
+  }
 }
 
 export default {
