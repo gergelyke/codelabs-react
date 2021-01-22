@@ -71,7 +71,9 @@ export function Codelabs({
     h4: (props) => <H4Component>{props.children}</H4Component>,
     h5: (props) => <H5Component>{props.children}</H5Component>,
     h6: (props) => <H6Component>{props.children}</H6Component>,
-    li: (props) => <ListItemComponent>{props.children}</ListItemComponent>,
+    li: (props) => (
+      <ListItemComponent {...props}>{props.children}</ListItemComponent>
+    ),
     infobox: (props) => <InfoBoxComponent>{props.children}</InfoBoxComponent>,
     warningbox: (props) => (
       <WarningBoxComponent>{props.children}</WarningBoxComponent>
@@ -132,7 +134,7 @@ function MapNode({ tag, node, Mapper, key }) {
   }
 
   return (
-    <Tag>
+    <Tag {...node}>
       {node.content.map((element, elementIndex) => {
         if (!element) return;
 

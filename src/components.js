@@ -98,8 +98,12 @@ export function Parapgraph({ children }) {
   return <p>{children}</p>;
 }
 
-export function ListItem({ children }) {
-  return <li>{children}</li>;
+export function ListItem({ children, magnitude }) {
+  return (
+    <ul style={{ marginLeft: `${magnitude - 36}px` }}>
+      <li>{children}</li>
+    </ul>
+  );
 }
 
 export function ButtonLink({ children, href }) {

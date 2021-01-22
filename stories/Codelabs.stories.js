@@ -23,13 +23,13 @@ export default {
 };
 
 export const Default = () => {
-  return <Codelabs content={source.content} />;
+  return <Codelabs content={source.body.content} />;
 };
 
 export const BaseWeb = () => {
   return (
     <Codelabs
-      content={source.content}
+      content={source.body.content}
       images={images.inlineObjects}
       onPageChange={({ nextPage }) => {
         console.log(`Changed to page ${nextPage}`);
