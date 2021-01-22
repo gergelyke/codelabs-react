@@ -1520,7 +1520,7 @@ Object {
             "italic": false,
           },
         ],
-        "type": "p",
+        "type": "li",
       },
       Object {
         "content": Array [
@@ -5816,7 +5816,7 @@ evt.respondWith(
             "italic": false,
           },
         ],
-        "type": "p",
+        "type": "li",
       },
       Object {
         "content": Array [
