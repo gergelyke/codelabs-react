@@ -21,6 +21,10 @@ import { Codelabs } from "codelabs-react";
 <Codelabs
   // required, response from the google docs api
   content={content}
+  // optional, response from the google docs api
+  // GET https://docs.googleapis.com/v1/documents/{documentId}?fields=inlineObjects
+  // needed, if you want images to be rendered
+  images={images}
   // optional, if your app needs to know about a page change
   onPageChange={({ nextPage }) => {}}
   // optional, if you want to set the initial page to show

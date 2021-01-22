@@ -20,6 +20,7 @@ import {
   CodeBox,
   Parapgraph,
   ListItem,
+  Img,
 } from "./components";
 
 import Extract from "./extract";
@@ -27,6 +28,7 @@ import Extract from "./extract";
 // TODO: this function is a mess, need to break it apart
 export function Codelabs({
   content,
+  images = {},
   overrides = {},
   onPageChange = () => {},
   initialPage = 0,
@@ -58,7 +60,9 @@ export function Codelabs({
   const WarningBoxComponent = overrides.WarningBox || WarningBox;
   const CodeBoxComponent = overrides.CodeBox || CodeBox;
 
-  const parsedContent = Extract.parse(content);
+  const ImgComponent = overrides.Img || Img;
+
+  const parsedContent = Extract.parse(content, images);
 
   const Mapper = {
     p: (props) => <ParapgraphComponent>{props.children}</ParapgraphComponent>,
@@ -82,6 +86,7 @@ export function Codelabs({
     codebox: (props) => (
       <CodeBoxComponent {...props}>{props.children}</CodeBoxComponent>
     ),
+    img: (props) => <ImgComponent {...props} />,
   };
 
   const pages = parsedContent.pages.map((page, pageIndex) => {
@@ -155,6 +160,11 @@ function MapNode({ tag, node, Mapper, key }) {
               {element.content}
             </Mapper.commandlinesnippet>
           );
+        }
+
+        if (element.type === "img") {
+          console.log(element);
+          return <Mapper.img key={key} {...element} />;
         }
 
         return (
