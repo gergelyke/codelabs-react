@@ -148,7 +148,10 @@ function getParagraphType(paragraph) {
   };
 
   try {
-    if (paragraph.paragraphStyle.spacingMode === "COLLAPSE_LISTS") {
+    if (
+      paragraph.paragraphStyle.spacingMode === "COLLAPSE_LISTS" ||
+      paragraph.paragraphStyle.indentStart
+    ) {
       return "li";
     }
   } catch (ex) {
