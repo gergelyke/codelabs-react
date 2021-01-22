@@ -35,7 +35,7 @@ export function Codelabs({
 }) {
   if (!content) throw new Error("Missing property: content");
 
-  const [page, setPage] = useState(initialPage);
+  const [page, setPage] = useState(Number(initialPage));
 
   const PageComponent = overrides.Page || Page;
   const HeaderComponent = overrides.Header || Header;
@@ -163,7 +163,6 @@ function MapNode({ tag, node, Mapper, key }) {
         }
 
         if (element.type === "img") {
-          console.log(element);
           return <Mapper.img key={key} {...element} />;
         }
 
