@@ -1,7 +1,7 @@
 const infoColor = { red: 0.8509804, green: 0.91764706, blue: 0.827451 };
 const warningColor = { red: 0.9882353, green: 0.8980392, blue: 0.8039216 };
 
-function parse(content) {
+function parse(content, images) {
   const title = extractTitle(content);
   const headings = extractHeadings(content);
 
@@ -10,7 +10,7 @@ function parse(content) {
   const pages = rawPages.map((page) => {
     return page.map((node) => {
       if (node.paragraph) {
-        return parseParagraph(node.paragraph);
+        return parseParagraph(node.paragraph, images);
       } else if (node.table) {
         return parseTable(node.table);
       } else {
@@ -26,13 +26,22 @@ function parse(content) {
   };
 }
 
-function parseParagraph(paragraph) {
+function parseParagraph(paragraph, images) {
   return {
     type: getParagraphType(paragraph),
     content: paragraph.elements.map((element) => {
       // TODO(): add image support
       if (element.inlineObjectElement) {
-        return null;
+        const { inlineObjectId } = element.inlineObjectElement;
+        const inlineObject = images[inlineObjectId];
+        if (!inlineObject) return null;
+
+        return {
+          type: "img",
+          src:
+            inlineObject.inlineObjectProperties?.embeddedObject?.imageProperties
+              ?.contentUri,
+        };
       }
 
       // TODO(): add horizontal rule support

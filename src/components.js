@@ -175,3 +175,7 @@ export function WarningBox({ children }) {
     </div>
   );
 }
+
+export function Img({ src }) {
+  return <img width="100%" src={src} />;
+}

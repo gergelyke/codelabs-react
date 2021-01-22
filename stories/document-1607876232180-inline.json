@@ -1,0 +1,984 @@
+{
+  "inlineObjects": {
+    "kix.e4js3i1n226u": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh5.googleusercontent.com/YCMEbdZs8qIMJgSlMLxKzxbeJEvRfTtfGl5OnyYZ-Hh8mAFjvicy9dCUa3pFke0ry52J_5wlVE9BBIiXlrb3AURj5qlFiKlUA0EsbLbpLd1juG6AhRWgie8wPwsic4fShfkIE2mt0gqGBsgr2QmujGuUF4kvFLbSl9ir7_hGCumi-4x4IDdeMkp2Uw",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 346,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.e4js3i1n226u"
+    },
+    "kix.tpxxwy4md5al": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh3.googleusercontent.com/hE3ec-CZj1OTaP9HYkxRiGXkF5C8995Bc59Aw_eDG4cjtvs_KBjBsDNfYQA5s4Mg4-PxFcGcO_Z7aCPt9tYYrTTTGzY5gCNDhdoZSg3OoJsHSAcDqadIGS_AgQNKCI542qY5oR2YX-OsXuiR3yonH_FJNJrRkJZJDx-VJnTuX5P_rllF0mEx6NVSaw",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 318,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.tpxxwy4md5al"
+    },
+    "kix.af1lmk5hj2kt": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh5.googleusercontent.com/5WHN6xDrNNWaowZ1g3wpuvxqCiww_ZkXrmxFPe8iXWLb4RFAayMkLDb9ForwVxsKW2AfnfIUQXTwLxgEneKtnP0D8A-OhCRM6FKm8KGfZtDDa8gwsBgK7SG1hgj7ptj3k4fKKdksFSBgKgPbESH4bPvvWV35bbri77AS1OnvaF-2ALncRYvdd0Si5A",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 87,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.af1lmk5hj2kt"
+    },
+    "kix.49hpjjhwa8r8": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh5.googleusercontent.com/JtD6qE-9R98bh_OoSgoBE7MpuRye8fGhds1fF_AlaNfR0UcucFeJF6c_QecNaCFatWr625aNCa5sRyvX8EjIcSLAUIQaeGyee8Fot-XZksQPuTcx1tLGr8qJhfl5WR82ZXJXwKo6w2NRXE2mScL7ylTztkwpBN_TGygDgy7tG_wTZIXPYavyvtn9mA",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 283.7872340425532,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 106.875,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.49hpjjhwa8r8"
+    },
+    "kix.8ejblsn9v1co": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh3.googleusercontent.com/IPIbq0PRuEJa0h4K7evUK4mkEInxK5sIKqNhm9AvNYry3kxjqowiYbru-mLLicuX-W8yZl6dBf9W29kG4A1y41Rw6TCFFDmu66oDi05TKETCZ8B2H1BSCPiouz6xU0AQ2zYKSbq7IaHfOljnMTlzq03GsmgPqRfD1mRg2UN_niQ9_Fg67LX_0NrZqg",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 345,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.8ejblsn9v1co"
+    },
+    "kix.ncd26cma7ryy": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh4.googleusercontent.com/Hi12Rz3uko12t4Xy5SuUhmtfC5OYMpci5dMufJeJjNSUjoM2bNShlcb18c3LuGLV7juBEv9qDvp5plkKt3IwgyOT1QTZ3l55VcuADmF8ODY4SttJY0CEpZ8jqciPvNPANGpZDCqqoWCyXfmJkRZSLDhjjtbWOy6JDnk3QSk3UPxiWHoCCnXexGYFhw",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 223.5,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 112,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.ncd26cma7ryy"
+    },
+    "kix.b14tpbqcyc9a": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh5.googleusercontent.com/MUjPQ3sqQrbG_zgL3DA1t8FDytm37ZBQnQb32J9ruU3DhI55736hndt1QPofWMuyTOgc5vi5Gfcp8W4wG7KTWPh0DgR1QkvoxOFYFmLfO1Q8e3Wl0rx0Q2i0WaZEslXLKnabo8voZTbChp0hpiBqt3jZv8H39uuo3UY3T0uOEWeXpoNshWu7zc2Ycw",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 292,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.b14tpbqcyc9a"
+    },
+    "kix.sohjgyxwj7b1": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh6.googleusercontent.com/-799NMOIZdmXBapjanlzGYTehQyixgEp7zqpETuzdnClXLm5TtUHDN_Qz5x8cUJmWIgaACYjtvCf-O7YdjWyTgp708FLs678LehBRpIJPG4mfzNJNI-CsYw6qM4WjaE8egHrEobTFf2ZeQUg9OHXtI938xcsHTiLMi8lCpxSrI_zysuk2R0cI43Lxg",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 227,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.sohjgyxwj7b1"
+    },
+    "kix.54cfkghl595i": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh3.googleusercontent.com/jRnv8TAQ0eeqvEBb-hrnWwXVTP_pTOmJFSK48Nh3Nmwrl0G1Lk651pSDZjnJohwdyAwdmtYSHtVZBdDQeQ0E-8Kwv6tEiji45VQZ1k51x6bbzRx-wdpZ0YzFScyMlgfXkLzIV_h6xVxVDxly5FqQfOM7F5eZbOGSxg8r0wPQVh4cDLKWobMIOmNACg",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 336,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.54cfkghl595i"
+    },
+    "kix.r7sqbi7robnc": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh5.googleusercontent.com/3RS7VSwfVTVaYo0cwlzNC9pvwe0nXaglNSlhNSqwZkxkp1rNYyZGDZ9SRo9FmqdzdAsVurmMAZLP99AvGsX_HFqdBtuTfa-0xKiiaciHRWJSNmDFvE_MvzCB8OrSfZYVD88jnAFvSXBZndVEC9--a5PHWQ8VfiGY1MV-xW1DsQWa2TpmOCLc2SrVhA",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 350,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.r7sqbi7robnc"
+    },
+    "kix.xhc7qcwxvaep": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh5.googleusercontent.com/fEJKUrIbfok97-mB5JZ6C7OKTLQYlDe_C0I5wy9P6u5E0_JfZFVqpmnAP2QWxjaNZWsi4w4IJgAptWn2cP5b6MzxEZ4WR0TK8LYG0kxU0rbIf97eAb_wXz77e4k7x35W25DhOLGB1SSF5baCQ1Rn_wcT4Ny3FAiMHG_yXP2VBz-L_sIEofoDiXekyg",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 154,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.xhc7qcwxvaep"
+    },
+    "kix.tl4znns41eq": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh6.googleusercontent.com/6xTOtuPPqt3jaTJcsW52Qg1iWXxF-noY4vFswp5stsdBt3V5orGSEA4el3ee3BS38bEL4IRdbmfBQkxToWT-9X-iBSd4qobKezr4umiLx7IpG7xknu8FEhLTXogb-4bkDBrETicvuulzCuRu_5Y50_gV-IxC3P7udLehjGENc6_a0_MgRVSFczDMdw",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 324,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.tl4znns41eq"
+    },
+    "kix.jjh47gs5xgo": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh6.googleusercontent.com/wqspF7_0SqSrMqfnva_yCjHLSJUXt10jGFJESeE4P-XuyYReIa_NnVnnBsEQCOT4Ip_UM1SwZB6pBZ7-KBTd2ofN9OBeqpE_YYIOHQuab9GmIdUhku1kRA5iHPkm-Pg9Ym3UQFVIK6GltYaEUXx6AFHPMkrd_XnrnT8l95gy_-fuvnEZO72SWxM1ng",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 336,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.jjh47gs5xgo"
+    },
+    "kix.y5t6crx2wc7": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh4.googleusercontent.com/p324UE5rmOCspfUx8YDVe4mVO3xAvYIUb7dgmHkX3u9LCTdFQWv7YbzmHY8jnIb2mKrr1jZcIERqEVoZyHONgnll-NNCj1i2QV1XGpzRlUmx0o-Pm7g3_VTmSgT91cYCVxhVJDmL5NLt0MDgQbXtnHwn5Be3S8qV8Mu6qSHmf66HK05j1v1fNOkZIA",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 159,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.y5t6crx2wc7"
+    },
+    "kix.si64ttjq1lph": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh3.googleusercontent.com/orvi1V0hUQkfZbXQrn1qqUwW4W1LEMjAVgxAZSGYex9rJELK-wAROFKhPAa6V67rDtD-kwNzFx6Hq88co1bkSxLtJt2JDW9HvJSkl5KkX038I9lv5dWj9CeDiWD8ahcB9ZHiaZIthx_NvlpwnQUjjL770jOzkrqxMw5RpfZmbPosxPDuNb5fMdq5dA",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 14.25,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 20.25,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.si64ttjq1lph"
+    },
+    "kix.2lhnxy96lmfo": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh6.googleusercontent.com/YVBxaV3ZnWhrRSZyLQQGZXCrBCuX_xhwtJCxnWlwNwbdmfCKV5B4JkZGujTNvQN3y8rK7Vz6obHRt9FPVHs3w9DHM7RP7OPf8Hpzn-3BiBQTPlwTUMvpHQrMLwN30EibGNFerJ_VUFHgzXkb3sI6QuHNOcjPdzpeAoDT1cHsX_WH4L6OCoDpN2gStQ",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 90,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.2lhnxy96lmfo"
+    },
+    "kix.xgk1ohhythnf": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh5.googleusercontent.com/gJHkqVvY1pDbZVSUqOdDE-6UBc822E3vWoWbeHvIMgEyLNcAEvjwhZYEKaDyKY9zmY_P_rcroh8FjFxUFVSLTn4wJixvI_gAZYQ-SlaCCOk6WvBqWgul16venbAr_btZdVotPoSb3kMZ0yps5ZoUl2Kjob_-bI9AltUk5tE10ztYi07YulWjgmcUdQ",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 157,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.xgk1ohhythnf"
+    },
+    "kix.t6acfleunmh0": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh4.googleusercontent.com/soG7UrCMZKuGVlPoBIlfrMvluYAYjS2yJTNvAggxsVq6Ouabxo8gOV3mVa6oCDomO0dDEV6jo4vzPpn-4RSZU8XxiGsJPV59juj10hgWFdsHv-HuLc9XFHvosXN_DtrVr0Eq_uuY8RUvGtSRAcyRqGDpqbYho5zhf0SiQ5z298jZRth9S3w8iaKVcw",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 152,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.t6acfleunmh0"
+    },
+    "kix.6u4dgxjp2h0y": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh4.googleusercontent.com/aRWNbvkEy5L0033WvEGcwb4Gn34EKuH4RQm0Kx8ca5LL9euZsQsUJMXJvAdtXxGR9MSxZrJSXo1npU2h2WC4w1Vx-Vjd84C3PjxWRjbaD2J6bCg3cQpTeabx4F81NNwDiEk66uYI5uyXqVi5V6zJoFTJFpX_dppbHoAfiJ0nA7HYlfizxoYSw1kOJg",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 205,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.6u4dgxjp2h0y"
+    },
+    "kix.6d4kvlp57rhj": {
+      "inlineObjectProperties": {
+        "embeddedObject": {
+          "imageProperties": {
+            "contentUri": "https://lh6.googleusercontent.com/RPYCR0RZSF-iSrt2NyqTwKO_QVZEn_jPnEuiQnkMhe5NHcAPasVgqds2ViMeT_54qXNxyMlPAq0ksf17LR-KFOpeHQ0N8Ou1Odz81JSwL2Z4xAOXTxtcdqsRvG7Vm2Fl__mulH-KtYYQIFlvgzxSyUzDzGIluVytv-TovzPBqVap_H8IBD8UENCFBQ",
+            "cropProperties": {}
+          },
+          "marginBottom": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "embeddedObjectBorder": {
+            "color": {
+              "color": {
+                "rgbColor": {}
+              }
+            },
+            "width": {
+              "unit": "PT"
+            },
+            "dashStyle": "SOLID",
+            "propertyState": "NOT_RENDERED"
+          },
+          "marginLeft": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginRight": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "marginTop": {
+            "magnitude": 9,
+            "unit": "PT"
+          },
+          "size": {
+            "width": {
+              "magnitude": 468,
+              "unit": "PT"
+            },
+            "height": {
+              "magnitude": 280,
+              "unit": "PT"
+            }
+          }
+        }
+      },
+      "objectId": "kix.6d4kvlp57rhj"
+    }
+  }
+}
