@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import { content } from "../stories/document-1607876232180.json";
+import { body } from "../stories/document-1607876232180.json";
 import { inlineObjects } from "../stories/document-1607876232180-inline.json";
 import Extract from "./extract";
 
@@ -17,7 +17,7 @@ import { Default, BaseWeb } from "../stories/Codelabs.stories";
 afterEach(cleanup);
 
 test("Extract parses the document", () => {
-  const tree = Extract.parse(content, inlineObjects);
+  const tree = Extract.parse(body.content, inlineObjects);
   expect(tree).toMatchSnapshot();
 });
 

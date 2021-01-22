@@ -28,7 +28,7 @@ function parse(content, images) {
 
 function parseParagraph(paragraph, images) {
   return {
-    type: getParagraphType(paragraph),
+    ...getParagraphDetails(paragraph),
     content: paragraph.elements.map((element) => {
       // TODO(): add image support
       if (element.inlineObjectElement) {
@@ -137,7 +137,7 @@ function getElementProperties(element) {
   };
 }
 
-function getParagraphType(paragraph) {
+function getParagraphDetails(paragraph) {
   const mapping = {
     NORMAL_TEXT: "p",
     HEADING_2: "h2",
@@ -148,21 +148,23 @@ function getParagraphType(paragraph) {
   };
 
   try {
-    if (
-      paragraph.paragraphStyle.spacingMode === "COLLAPSE_LISTS" ||
-      paragraph.paragraphStyle.indentStart
-    ) {
-      return "li";
+    if (paragraph.paragraphStyle.indentStart) {
+      return {
+        type: "li",
+        ...paragraph.paragraphStyle.indentStart,
+      };
     }
   } catch (ex) {
     // do nothing
   }
 
   try {
-    return mapping[paragraph.paragraphStyle.namedStyleType];
+    return {
+      type: mapping[paragraph.paragraphStyle.namedStyleType],
+    };
   } catch (e) {
     // defaults to p
-    return "p";
+    return { type: "p" };
   }
 }
 
