@@ -70,7 +70,7 @@ import { Codelabs } from "codelabs-react";
 
 Currently, the following features are missing, and will be added in the future:
 
-- [ ] Image support
+- [x] Image support
 - [ ] YouTube support
 - [ ] Per-step time estimation
 - [ ] Feedback links
