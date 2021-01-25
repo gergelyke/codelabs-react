@@ -1,8 +1,7 @@
 import React from "react";
 
 import { Codelabs } from "../src/index.js";
-import source from "./document-1607876232180.json";
-import images from "./document-1607876232180-inline.json";
+import response from "./document-1607876232180.json";
 
 import {
   HeaderNavigation,
@@ -23,14 +22,13 @@ export default {
 };
 
 export const Default = () => {
-  return <Codelabs content={source.body.content} />;
+  return <Codelabs content={response} />;
 };
 
 export const BaseWeb = () => {
   return (
     <Codelabs
-      content={source.body.content}
-      images={images.inlineObjects}
+      content={response}
       onPageChange={({ nextPage }) => {
         console.log(`Changed to page ${nextPage}`);
       }}

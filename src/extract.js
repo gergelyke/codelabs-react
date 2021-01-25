@@ -1,7 +1,9 @@
 const infoColor = { red: 0.8509804, green: 0.91764706, blue: 0.827451 };
 const warningColor = { red: 0.9882353, green: 0.8980392, blue: 0.8039216 };
 
-function parse(content, images) {
+function parse(response) {
+  const { content } = response.body;
+  const { inlineObjects } = response;
   const title = extractTitle(content);
   const headings = extractHeadings(content);
 
@@ -10,7 +12,7 @@ function parse(content, images) {
   const pages = rawPages.map((page) => {
     return page.map((node) => {
       if (node.paragraph) {
-        return parseParagraph(node.paragraph, images);
+        return parseParagraph(node.paragraph, inlineObjects);
       } else if (node.table) {
         return parseTable(node.table);
       } else {
@@ -26,15 +28,29 @@ function parse(content, images) {
   };
 }
 
-function parseParagraph(paragraph, images) {
+function parseParagraph(paragraph, inlineObjects) {
+  const YouTubeBase = "youtube.com/watch?v=";
   return {
     ...getParagraphDetails(paragraph),
     content: paragraph.elements.map((element) => {
       // TODO(): add image support
       if (element.inlineObjectElement) {
         const { inlineObjectId } = element.inlineObjectElement;
-        const inlineObject = images[inlineObjectId];
+        const inlineObject = inlineObjects[inlineObjectId];
         if (!inlineObject) return null;
+
+        if (
+          inlineObject.inlineObjectProperties?.embeddedObject?.description?.includes(
+            YouTubeBase
+          )
+        ) {
+          return {
+            type: "youtube",
+            v: inlineObject.inlineObjectProperties.embeddedObject.description.split(
+              YouTubeBase
+            )[1],
+          };
+        }
 
         return {
           type: "img",
