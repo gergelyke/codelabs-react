@@ -168,6 +168,28 @@ function MapNode({ tag, node, Mapper, key }) {
           return <Mapper.img key={key} {...element} />;
         }
 
+        if (element.type === "youtube") {
+          return (
+            <div>
+              <div style={{ position: "relative", paddingTop: "56.25%" }}>
+                {/* https://jameshfisher.com/2017/08/30/how-do-i-make-a-full-width-iframe/ */}
+                <iframe
+                  src={`https://www.youtube.com/embed/${element.v}`}
+                  frameborder="0"
+                  allowfullscreen
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </div>
+            </div>
+          );
+        }
+
         return (
           <span
             style={{
