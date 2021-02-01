@@ -1,7 +1,9 @@
+import url from "url";
+
 const infoColor = { red: 0.8509804, green: 0.91764706, blue: 0.827451 };
 const warningColor = { red: 0.9882353, green: 0.8980392, blue: 0.8039216 };
 
-function parse(response) {
+function parse(response, iframeSourceUrls) {
   const { content } = response.body;
   const { inlineObjects } = response;
   const title = extractTitle(content);
@@ -12,7 +14,7 @@ function parse(response) {
   const pages = rawPages.map((page) => {
     return page.map((node) => {
       if (node.paragraph) {
-        return parseParagraph(node.paragraph, inlineObjects);
+        return parseParagraph(node.paragraph, inlineObjects, iframeSourceUrls);
       } else if (node.table) {
         return parseTable(node.table);
       } else {
@@ -28,7 +30,7 @@ function parse(response) {
   };
 }
 
-function parseParagraph(paragraph, inlineObjects) {
+function parseParagraph(paragraph, inlineObjects, iframeSourceUrls) {
   const YouTubeBase = "youtube.com/watch?v=";
   return {
     ...getParagraphDetails(paragraph),
@@ -39,11 +41,13 @@ function parseParagraph(paragraph, inlineObjects) {
         const inlineObject = inlineObjects[inlineObjectId];
         if (!inlineObject) return null;
 
-        if (
-          inlineObject.inlineObjectProperties?.embeddedObject?.description?.includes(
-            YouTubeBase
-          )
-        ) {
+        const description =
+          inlineObject.inlineObjectProperties?.embeddedObject?.description;
+        const contentUri =
+          inlineObject.inlineObjectProperties?.embeddedObject?.imageProperties
+            ?.contentUri;
+
+        if (description?.includes(YouTubeBase)) {
           return {
             type: "youtube",
             v: inlineObject.inlineObjectProperties.embeddedObject.description.split(
@@ -52,12 +56,28 @@ function parseParagraph(paragraph, inlineObjects) {
           };
         }
 
-        return {
-          type: "img",
-          src:
-            inlineObject.inlineObjectProperties?.embeddedObject?.imageProperties
-              ?.contentUri,
-        };
+        if (description) {
+          // we never know if it's a URL we have here, so we need the try catch
+          try {
+            const baseUrl = new URL(description).hostname;
+
+            if (iframeSourceUrls.includes(baseUrl)) {
+              return {
+                type: "iframe",
+                src: description,
+              };
+            }
+          } catch (ex) {
+            // we don't do anything
+          }
+        }
+
+        if (contentUri) {
+          return {
+            type: "img",
+            src: contentUri,
+          };
+        }
       }
 
       // TODO(): add horizontal rule support

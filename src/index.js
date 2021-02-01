@@ -21,6 +21,7 @@ import {
   Parapgraph,
   ListItem,
   Img,
+  IFrame,
 } from "./components";
 
 import Extract from "./extract";
@@ -28,10 +29,10 @@ import Extract from "./extract";
 // TODO: this function is a mess, need to break it apart
 export function Codelabs({
   content,
-  images = {},
   overrides = {},
   onPageChange = () => {},
   initialPage = 0,
+  iframeSourceUrls = [],
 }) {
   if (!content) throw new Error("Missing property: content");
 
@@ -61,8 +62,9 @@ export function Codelabs({
   const CodeBoxComponent = overrides.CodeBox || CodeBox;
 
   const ImgComponent = overrides.Img || Img;
+  const IFrameComponent = overrides.IFrame || IFrame;
 
-  const parsedContent = Extract.parse(content, images);
+  const parsedContent = Extract.parse(content, iframeSourceUrls);
 
   const Mapper = {
     p: (props) => <ParapgraphComponent>{props.children}</ParapgraphComponent>,
@@ -89,6 +91,7 @@ export function Codelabs({
       <CodeBoxComponent {...props}>{props.children}</CodeBoxComponent>
     ),
     img: (props) => <ImgComponent {...props} />,
+    iframe: (props) => <IFrameComponent {...props} />,
   };
 
   const pages = parsedContent.pages.map((page, pageIndex) => {
@@ -170,24 +173,12 @@ function MapNode({ tag, node, Mapper, key }) {
 
         if (element.type === "youtube") {
           return (
-            <div>
-              <div style={{ position: "relative", paddingTop: "56.25%" }}>
-                {/* https://jameshfisher.com/2017/08/30/how-do-i-make-a-full-width-iframe/ */}
-                <iframe
-                  src={`https://www.youtube.com/embed/${element.v}`}
-                  frameborder="0"
-                  allowfullscreen
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                />
-              </div>
-            </div>
+            <Mapper.iframe src={`https://www.youtube.com/embed/${element.v}`} />
           );
+        }
+
+        if (element.type === "iframe") {
+          return <Mapper.iframe src={element.src} />;
         }
 
         return (

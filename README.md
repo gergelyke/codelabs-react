@@ -26,6 +26,8 @@ import { Codelabs } from "codelabs-react";
   onPageChange={({ nextPage }) => {}}
   // optional, if you want to set the initial page to show
   initialPage={Number}
+  // optional, if you want to use iframes, you have to define the allowed base URLs, like 'google.com'
+  iframeSourceUrls={[String]}
   // optional, used for styling
   overrides={{
     // Layout overrides
@@ -59,6 +61,10 @@ import { Codelabs } from "codelabs-react";
     // Box: multi-line
     Snippet: ({ children }) => React.Component,
     CodeBox: ({ children }) => React.Component,
+
+    // image / video components
+    Img: ({ src }) => React.Component,
+    IFrame: ({ src }) => React.Component,
   }}
 />;
 ```
