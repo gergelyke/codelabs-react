@@ -22,7 +22,7 @@ export default {
 };
 
 export const Default = () => {
-  return <Codelabs content={response} />;
+  return <Codelabs content={response} iframeSourceUrls={"nemethgergely.com"} />;
 };
 
 export const BaseWeb = () => {
@@ -33,6 +33,7 @@ export const BaseWeb = () => {
         console.log(`Changed to page ${nextPage}`);
       }}
       initialPage={1}
+      iframeSourceUrls={"nemethgergely.com"}
       overrides={{
         Content: ({ children }) => {
           return (

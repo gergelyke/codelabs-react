@@ -16,7 +16,7 @@ import { Default, BaseWeb } from "../stories/Codelabs.stories";
 afterEach(cleanup);
 
 test("Extract parses the document", () => {
-  const tree = Extract.parse(response);
+  const tree = Extract.parse(response, ["nemethgergely.com"]);
   expect(tree).toMatchSnapshot();
 });
 

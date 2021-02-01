@@ -183,3 +183,25 @@ export function WarningBox({ children }) {
 export function Img({ src }) {
   return <img width="100%" src={src} />;
 }
+
+export function IFrame({ src }) {
+  return (
+    <div>
+      <div style={{ position: "relative", paddingTop: "56.25%" }}>
+        {/* https://jameshfisher.com/2017/08/30/how-do-i-make-a-full-width-iframe/ */}
+        <iframe
+          src={src}
+          frameborder="0"
+          allowfullscreen
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
