@@ -38,14 +38,14 @@ import { Codelabs } from "codelabs-react";
     Button: ({ children }) => React.Component,
 
     // Text overrides
-    Parapgraph: ({ children }) => React.Component,
+    Paragraph: ({ children }) => React.Component,
     H1: ({ children }) => React.Component,
     H2: ({ children }) => React.Component,
     H3: ({ children }) => React.Component,
     H4: ({ children }) => React.Component,
     H5: ({ children }) => React.Component,
     H6: ({ children }) => React.Component,
-    Parapgraph: ({ children }) => React.Component,
+    Paragraph: ({ children }) => React.Component,
     ListItem: ({ children }) => React.Component,
 
     // Info and warning boxes

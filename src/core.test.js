@@ -31,6 +31,29 @@ test("Initial page is set to Page 2", async () => {
   expect(screen.getByText("2. Getting set up")).toBeInTheDocument();
 });
 
+test("Copy component displays on hover and is clickable", async () => {
+  render(<BaseWeb />);
+
+  const button = screen.getByRole("button", { name: "Copy" });
+  expect(button).not.toBeVisible();
+
+  // test hovering the snippet container
+  fireEvent(
+    screen.getByText(
+      "https://api.darksky.net/forecast/DARKSKY_API_KEY/40.7720232,-73.9732319"
+    ),
+    new MouseEvent("mouseover", {
+      bubbles: true,
+      cancelable: true,
+    })
+  );
+  expect(button).toBeVisible();
+
+  // test copying
+  fireEvent.click(button);
+  expect(button.textContent).toBe("Copied");
+});
+
 test("Page can be navigated using the buttons at the bottom of the page", async () => {
   render(<Default />);
 
