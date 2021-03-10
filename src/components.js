@@ -1,5 +1,7 @@
 import React from "react";
 
+import { CopyToClipboard } from "./components/copytoclipboard";
+
 export function Header({ title }) {
   return (
     <header
@@ -94,7 +96,7 @@ export function H6({ children }) {
   return <h6>{children}</h6>;
 }
 
-export function Parapgraph({ children }) {
+export function Paragraph({ children }) {
   return <p>{children}</p>;
 }
 
@@ -140,17 +142,23 @@ export function Link({ children, href }) {
 
 export function Snippet({ children }) {
   return (
-    <pre>
-      <code>{children}</code>
-    </pre>
+    <div style={{ position: "relative" }}>
+      <CopyToClipboard copyContent={children} />
+      <pre>
+        <code>{children}</code>
+      </pre>
+    </div>
   );
 }
 
 export function CodeBox({ children }) {
   return (
-    <pre>
-      <code>{children}</code>
-    </pre>
+    <div style={{ position: "relative" }}>
+      <CopyToClipboard copyContent={children} />
+      <pre>
+        <code>{children}</code>
+      </pre>
+    </div>
   );
 }
 
