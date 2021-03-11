@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import { Codelabs } from "../src/index.js";
-import { CopyToClipboard } from "../src/components/copytoclipboard";
+import { Codelabs, CopyToClipboard } from "../src";
 import response from "./document-1607876232180.json";
 
 import {
