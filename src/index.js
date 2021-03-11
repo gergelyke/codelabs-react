@@ -22,6 +22,7 @@ import {
   ListItem,
   Img,
   IFrame,
+  CopyToClipboard,
 } from "./components";
 
 import Extract from "./extract";
@@ -261,3 +262,28 @@ function Page({
     </div>
   );
 }
+
+export {
+  Header,
+  SideNavigation,
+  Content,
+  Main,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Button,
+  ButtonLink,
+  Snippet,
+  Link,
+  InfoBox,
+  WarningBox,
+  CodeBox,
+  Paragraph,
+  ListItem,
+  Img,
+  IFrame,
+  CopyToClipboard,
+};

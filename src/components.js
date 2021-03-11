@@ -213,3 +213,5 @@ export function IFrame({ src }) {
     </div>
   );
 }
+
+export { CopyToClipboard };
