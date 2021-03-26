@@ -1,6 +1,7 @@
 import React from "react";
 
 import { CopyToClipboard } from "./components/copytoclipboard";
+import { OnPageNavigation } from "./components/onpagenavigation";
 
 export function Header({ title }) {
   return (
@@ -76,24 +77,24 @@ export function H1({ children }) {
   return <h1>{children}</h1>;
 }
 
-export function H2({ children }) {
-  return <h2>{children}</h2>;
+export function H2({ id, children }) {
+  return <h2 id={id}>{children}</h2>;
 }
 
-export function H3({ children }) {
-  return <h3>{children}</h3>;
+export function H3({ id, children }) {
+  return <h3 id={id}>{children}</h3>;
 }
 
-export function H4({ children }) {
-  return <h4>{children}</h4>;
+export function H4({ id, children }) {
+  return <h4 id={id}>{children}</h4>;
 }
 
-export function H5({ children }) {
-  return <h5>{children}</h5>;
+export function H5({ id, children }) {
+  return <h5 id={id}>{children}</h5>;
 }
 
-export function H6({ children }) {
-  return <h6>{children}</h6>;
+export function H6({ id, children }) {
+  return <h6 id={id}>{children}</h6>;
 }
 
 export function Paragraph({ children }) {
@@ -214,4 +215,4 @@ export function IFrame({ src }) {
   );
 }
 
-export { CopyToClipboard };
+export { CopyToClipboard, OnPageNavigation };

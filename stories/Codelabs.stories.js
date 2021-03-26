@@ -17,6 +17,7 @@ import { Notification } from "baseui/notification";
 import Check from "baseui/icon/check";
 import { ListItem, ListItemLabel } from "baseui/list";
 import { ArrowUp } from "baseui/icon";
+import { Navigation } from "baseui/side-navigation";
 
 export default {
   title: "Codelabs/Example",
@@ -210,6 +211,20 @@ export const BaseWeb = () => {
             >
               {children}
             </Notification>
+          );
+        },
+        OnPageNavigation: ({ items, currentPage }) => {
+          return (
+            <Navigation
+              items={items[currentPage]}
+              overrides={{
+                Root: {
+                  style: {
+                    marginTop: "25px",
+                  },
+                },
+              }}
+            />
           );
         },
       }}

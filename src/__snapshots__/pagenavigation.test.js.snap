@@ -1,0 +1,803 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`H2 -> H3 -> h4 -> h5 -> H6 deep 1`] = `
+Array [
+  Array [
+    Object {
+      "itemId": "#h1-7",
+      "level": 2,
+      "title": "h1 title",
+    },
+    Object {
+      "itemId": "#h2-1",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-2",
+          "level": 3,
+          "subNav": Array [
+            Object {
+              "itemId": "#h4-3",
+              "level": 4,
+              "subNav": Array [
+                Object {
+                  "itemId": "#h5-4",
+                  "level": 5,
+                  "subNav": Array [
+                    Object {
+                      "itemId": "#h6-6",
+                      "level": 6,
+                      "title": "h6",
+                    },
+                  ],
+                  "title": "h5",
+                },
+              ],
+              "title": "h4",
+            },
+          ],
+          "title": "h3",
+        },
+      ],
+      "title": "h2",
+    },
+  ],
+]
+`;
+
+exports[`H2 -> H4 -> H3 -> H2 Skips h3 and reverses back 1`] = `
+Array [
+  Array [
+    Object {
+      "itemId": "#h1-5",
+      "level": 2,
+      "title": "h1 title",
+    },
+    Object {
+      "itemId": "#h2-1",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h4-2",
+          "level": 4,
+          "title": "h4",
+        },
+        Object {
+          "itemId": "#h3-3",
+          "level": 3,
+          "title": "h3",
+        },
+      ],
+      "title": "h2",
+    },
+    Object {
+      "itemId": "#h2-4",
+      "level": 2,
+      "title": "h2",
+    },
+  ],
+]
+`;
+
+exports[`H2 -> H4 -> H3 -> H5 Skips, reverses, and skips again 1`] = `
+Array [
+  Array [
+    Object {
+      "itemId": "#h1-5",
+      "level": 2,
+      "title": "h1 title",
+    },
+    Object {
+      "itemId": "#h2-1",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h4-2",
+          "level": 4,
+          "title": "h4",
+        },
+        Object {
+          "itemId": "#h3-3",
+          "level": 3,
+          "subNav": Array [
+            Object {
+              "itemId": "#h5-4",
+              "level": 5,
+              "title": "h5",
+            },
+          ],
+          "title": "h3",
+        },
+      ],
+      "title": "h2",
+    },
+  ],
+]
+`;
+
+exports[`H2 -> H4 nestings 1`] = `
+Array [
+  Array [
+    Object {
+      "itemId": "#h1-3",
+      "level": 2,
+      "title": "h1 title",
+    },
+    Object {
+      "itemId": "#h2-1",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h4-2",
+          "level": 4,
+          "title": "sub h4!",
+        },
+      ],
+      "title": "h2",
+    },
+  ],
+]
+`;
+
+exports[`The extracted sample doc parses properly 1`] = `
+Array [
+  Array [
+    Object {
+      "itemId": "#h1-0",
+      "level": 2,
+      "title": "Introduction",
+    },
+    Object {
+      "itemId": "#h2-12",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-17",
+          "level": 3,
+          "title": "Fast & Reliable
+",
+        },
+        Object {
+          "itemId": "#h3-22",
+          "level": 3,
+          "title": "Installable
+",
+        },
+        Object {
+          "itemId": "#h3-27",
+          "level": 3,
+          "title": "Mobile & Desktop
+",
+        },
+      ],
+      "title": "What makes a web app, a Progressive Web App?
+",
+    },
+    Object {
+      "itemId": "#h2-30",
+      "level": 2,
+      "title": "What you’ll build
+",
+    },
+    Object {
+      "itemId": "#h2-39",
+      "level": 2,
+      "title": "What you’ll learn
+",
+    },
+    Object {
+      "itemId": "#h2-43",
+      "level": 2,
+      "title": "What you’ll need
+",
+    },
+  ],
+  Array [
+    Object {
+      "itemId": "#h1-1",
+      "level": 2,
+      "title": "Getting set up",
+    },
+    Object {
+      "itemId": "#h2-51",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-59",
+          "level": 3,
+          "title": "Verify your API key is working properly
+",
+        },
+      ],
+      "title": "Get a key for the Dark Sky API
+",
+    },
+    Object {
+      "itemId": "#h2-67",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-70",
+          "level": 3,
+          "title": "Strongly Recommended: Use Glitch to import the repo
+",
+        },
+        Object {
+          "itemId": "#h3-74",
+          "level": 3,
+          "title": "Alternative: Download code & work locally
+",
+        },
+      ],
+      "title": "Get the code
+",
+    },
+  ],
+  Array [
+    Object {
+      "itemId": "#h1-2",
+      "level": 2,
+      "title": "Establish a baseline",
+    },
+    Object {
+      "itemId": "#h2-88",
+      "level": 2,
+      "title": "What’s our starting point?
+",
+    },
+    Object {
+      "itemId": "#h2-96",
+      "level": 2,
+      "title": "Audit with Lighthouse 
+",
+    },
+    Object {
+      "itemId": "#h2-106",
+      "level": 2,
+      "title": "Let’s run Lighthouse
+",
+    },
+    Object {
+      "itemId": "#h2-109",
+      "level": 2,
+      "title": "The Progressive Web App Audit
+",
+    },
+  ],
+  Array [
+    Object {
+      "itemId": "#h1-3",
+      "level": 2,
+      "title": "Add a web app manifest",
+    },
+    Object {
+      "itemId": "#h2-125",
+      "level": 2,
+      "title": "Create the web app manifest
+",
+    },
+    Object {
+      "itemId": "#h2-139",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-142",
+          "level": 3,
+          "title": "public/index.html 
+",
+        },
+        Object {
+          "itemId": "#h3-145",
+          "level": 3,
+          "title": "DevTools Detour
+",
+        },
+      ],
+      "title": "Add a link to the web app manifest
+",
+    },
+    Object {
+      "itemId": "#h2-150",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-153",
+          "level": 3,
+          "title": "public/index.html 
+",
+        },
+      ],
+      "title": "Add iOS meta tags & icons
+",
+    },
+    Object {
+      "itemId": "#h2-156",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-159",
+          "level": 3,
+          "title": "Set the meta description
+",
+        },
+        Object {
+          "itemId": "#h3-164",
+          "level": 3,
+          "title": "public/index.html 
+",
+        },
+        Object {
+          "itemId": "#h3-166",
+          "level": 3,
+          "title": "Set the address bar theme color
+",
+        },
+        Object {
+          "itemId": "#h3-171",
+          "level": 3,
+          "title": "public/index.html 
+",
+        },
+      ],
+      "title": "Bonus: Easy Lighthouse fixes
+",
+    },
+    Object {
+      "itemId": "#h2-174",
+      "level": 2,
+      "title": "Verify changes with Lighthouse
+",
+    },
+  ],
+  Array [
+    Object {
+      "itemId": "#h1-4",
+      "level": 2,
+      "title": "Provide a basic offline experience",
+    },
+    Object {
+      "itemId": "#h2-194",
+      "level": 2,
+      "title": "Service workers to the rescue
+",
+    },
+    Object {
+      "itemId": "#h2-203",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-206",
+          "level": 3,
+          "title": "public/index.html 
+",
+        },
+      ],
+      "title": "Register the service worker
+",
+    },
+    Object {
+      "itemId": "#h2-213",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-218",
+          "level": 3,
+          "title": "public/service-worker.js 
+",
+        },
+        Object {
+          "itemId": "#h3-222",
+          "level": 3,
+          "title": "public/service-worker.js 
+",
+        },
+        Object {
+          "itemId": "#h3-231",
+          "level": 3,
+          "title": "DevTools Detour
+",
+        },
+      ],
+      "title": "Precache offline page
+",
+    },
+    Object {
+      "itemId": "#h2-246",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-251",
+          "level": 3,
+          "title": "public/service-worker.js 
+",
+        },
+        Object {
+          "itemId": "#h3-253",
+          "level": 3,
+          "title": "DevTools Detour
+",
+        },
+      ],
+      "title": "Clean-up old offline pages
+",
+    },
+    Object {
+      "itemId": "#h2-261",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-266",
+          "level": 3,
+          "title": "public/service-worker.js 
+",
+        },
+        Object {
+          "itemId": "#h3-274",
+          "level": 3,
+          "title": "DevTools Detour
+",
+        },
+      ],
+      "title": "Handle failed network requests
+",
+    },
+    Object {
+      "itemId": "#h2-287",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-290",
+          "level": 3,
+          "title": "Use DevTools
+",
+        },
+        Object {
+          "itemId": "#h3-297",
+          "level": 3,
+          "title": "Start Fresh
+",
+        },
+      ],
+      "title": "Tips for testing service workers
+",
+    },
+    Object {
+      "itemId": "#h2-305",
+      "level": 2,
+      "title": "Verify changes with Lighthouse
+",
+    },
+  ],
+  Array [
+    Object {
+      "itemId": "#h1-5",
+      "level": 2,
+      "title": "Provide a full offline experience",
+    },
+    Object {
+      "itemId": "#h2-321",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-326",
+          "level": 3,
+          "title": "install  event
+",
+        },
+        Object {
+          "itemId": "#h3-335",
+          "level": 3,
+          "title": "activate  event
+",
+        },
+        Object {
+          "itemId": "#h3-338",
+          "level": 3,
+          "title": "fetch  event
+",
+        },
+        Object {
+          "itemId": "#h3-341",
+          "level": 3,
+          "title": "Updating a service worker
+",
+        },
+      ],
+      "title": "Service worker life cycle
+",
+    },
+    Object {
+      "itemId": "#h2-344",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-347",
+          "level": 3,
+          "title": "Caching static resources
+",
+        },
+        Object {
+          "itemId": "#h3-364",
+          "level": 3,
+          "title": "Caching the app data
+",
+        },
+      ],
+      "title": "Choosing the right caching strategy
+",
+    },
+    Object {
+      "itemId": "#h2-373",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-378",
+          "level": 3,
+          "title": "public/scripts/app.js 
+",
+        },
+        Object {
+          "itemId": "#h3-383",
+          "level": 3,
+          "title": "public/scripts/app.js 
+",
+        },
+        Object {
+          "itemId": "#h3-389",
+          "level": 3,
+          "title": "public/scripts/app.js 
+",
+        },
+      ],
+      "title": "Update app logic
+",
+    },
+    Object {
+      "itemId": "#h2-394",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-397",
+          "level": 3,
+          "title": "public/service-worker.js 
+",
+        },
+        Object {
+          "itemId": "#h3-404",
+          "level": 3,
+          "title": "public/service-worker.js 
+",
+        },
+        Object {
+          "itemId": "#h3-410",
+          "level": 3,
+          "title": "Update the activate event handler
+",
+        },
+        Object {
+          "itemId": "#h3-413",
+          "level": 3,
+          "title": "public/service-worker.js
+",
+        },
+        Object {
+          "itemId": "#h3-416",
+          "level": 3,
+          "title": "Update the fetch event handler
+",
+        },
+        Object {
+          "itemId": "#h3-421",
+          "level": 3,
+          "title": "public/service-worker.js 
+",
+        },
+      ],
+      "title": "Pre-cache our app resources
+",
+    },
+    Object {
+      "itemId": "#h2-427",
+      "level": 2,
+      "title": "Try it out
+",
+    },
+    Object {
+      "itemId": "#h2-438",
+      "level": 2,
+      "title": "Verify changes with Lighthouse
+",
+    },
+  ],
+  Array [
+    Object {
+      "itemId": "#h1-6",
+      "level": 2,
+      "title": "Add install experience",
+    },
+    Object {
+      "itemId": "#h2-460",
+      "level": 2,
+      "title": "Audit with Lighthouse
+",
+    },
+    Object {
+      "itemId": "#h2-471",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-474",
+          "level": 3,
+          "title": "public/index.html 
+",
+        },
+      ],
+      "title": "Add install.js to index.html
+",
+    },
+    Object {
+      "itemId": "#h2-477",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-480",
+          "level": 3,
+          "title": "public/scripts/install.js 
+",
+        },
+      ],
+      "title": "Listen for  beforeinstallprompt  event
+",
+    },
+    Object {
+      "itemId": "#h2-483",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-486",
+          "level": 3,
+          "title": "public/scripts/install.js 
+",
+        },
+      ],
+      "title": "Save event and show install button
+",
+    },
+    Object {
+      "itemId": "#h2-489",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-492",
+          "level": 3,
+          "title": "public/scripts/install.js 
+",
+        },
+      ],
+      "title": "Show the prompt / hide the button
+",
+    },
+    Object {
+      "itemId": "#h2-496",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-499",
+          "level": 3,
+          "title": "public/scripts/install.js 
+",
+        },
+        Object {
+          "itemId": "#h3-504",
+          "level": 3,
+          "title": "Log all install events
+",
+        },
+        Object {
+          "itemId": "#h3-507",
+          "level": 3,
+          "title": "public/scripts/install.js 
+",
+        },
+        Object {
+          "itemId": "#h3-511",
+          "level": 3,
+          "title": "public/scripts/install.js 
+",
+        },
+      ],
+      "title": "Log the results
+",
+    },
+    Object {
+      "itemId": "#h2-514",
+      "level": 2,
+      "title": "Update the service worker
+",
+    },
+    Object {
+      "itemId": "#h2-517",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-520",
+          "level": 3,
+          "title": "Verify the install button is visible
+",
+        },
+        Object {
+          "itemId": "#h3-523",
+          "level": 3,
+          "title": "Verify the install button works
+",
+        },
+        Object {
+          "itemId": "#h3-528",
+          "level": 3,
+          "title": "Verify iOS installation works properly
+",
+        },
+      ],
+      "title": "Try it out
+",
+    },
+    Object {
+      "itemId": "#h2-532",
+      "level": 2,
+      "title": "Bonus: Detecting if your app is launched from the home screen
+",
+    },
+    Object {
+      "itemId": "#h2-538",
+      "level": 2,
+      "subNav": Array [
+        Object {
+          "itemId": "#h3-541",
+          "level": 3,
+          "title": "Android
+",
+        },
+        Object {
+          "itemId": "#h3-544",
+          "level": 3,
+          "title": "ChromeOS
+",
+        },
+        Object {
+          "itemId": "#h3-547",
+          "level": 3,
+          "title": "macOS and Windows
+",
+        },
+      ],
+      "title": "Bonus: Uninstalling your PWA
+",
+    },
+  ],
+  Array [
+    Object {
+      "itemId": "#h1-7",
+      "level": 2,
+      "title": "Congratulations",
+    },
+    Object {
+      "itemId": "#h2-562",
+      "level": 2,
+      "title": "What’s next?
+",
+    },
+    Object {
+      "itemId": "#h2-564",
+      "level": 2,
+      "title": "Further reading
+",
+    },
+    Object {
+      "itemId": "#h2-566",
+      "level": 2,
+      "title": "Reference docs
+",
+    },
+  ],
+]
+`;

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   Header,
   SideNavigation,
+  OnPageNavigation,
   Content,
   Main,
   H1,
@@ -26,6 +27,7 @@ import {
 } from "./components";
 
 import Extract from "./extract";
+import parsePageNavigations from "./pagenavigations";
 
 // TODO: this function is a mess, need to break it apart
 export function Codelabs({
@@ -42,6 +44,8 @@ export function Codelabs({
   const PageComponent = overrides.Page || Page;
   const HeaderComponent = overrides.Header || Header;
   const SideNavigationComponent = overrides.SideNavigation || SideNavigation;
+  const OnPageNavigationComponent =
+    overrides.OnPageNavigation || OnPageNavigation;
   const ContentComponent = overrides.Content || Content;
   const MainComponent = overrides.Main || Main;
 
@@ -69,11 +73,11 @@ export function Codelabs({
 
   const Mapper = {
     p: (props) => <ParagraphComponent>{props.children}</ParagraphComponent>,
-    h2: (props) => <H2Component>{props.children}</H2Component>,
-    h3: (props) => <H3Component>{props.children}</H3Component>,
-    h4: (props) => <H4Component>{props.children}</H4Component>,
-    h5: (props) => <H5Component>{props.children}</H5Component>,
-    h6: (props) => <H6Component>{props.children}</H6Component>,
+    h2: (props) => <H2Component {...props}>{props.children}</H2Component>,
+    h3: (props) => <H3Component {...props}>{props.children}</H3Component>,
+    h4: (props) => <H4Component {...props}>{props.children}</H4Component>,
+    h5: (props) => <H5Component {...props}>{props.children}</H5Component>,
+    h6: (props) => <H6Component {...props}>{props.children}</H6Component>,
     li: (props) => (
       <ListItemComponent {...props}>{props.children}</ListItemComponent>
     ),
@@ -109,17 +113,24 @@ export function Codelabs({
     });
   });
 
+  const pageNavigations = parsePageNavigations(
+    parsedContent.pages,
+    parsedContent.headings
+  );
+
   return (
     <PageComponent
       title={parsedContent.title}
-      navigationItems={parsedContent.headings}
+      navigationItems={parsedContent.headings.map((heading) => heading.content)}
       pages={pages}
+      pageNavigations={pageNavigations}
       currentPage={page}
       setPage={setPage}
       onPageChange={onPageChange}
       overrides={{
         HeaderComponent,
         SideNavigationComponent,
+        OnPageNavigationComponent,
         ContentComponent,
         MainComponent,
         ButtonComponent,
@@ -200,14 +211,16 @@ function MapNode({ tag, node, Mapper, key }) {
 
 function Page({
   title,
-  navigationItems,
+  pageNavigations,
   pages,
+  navigationItems,
   currentPage,
   setPage,
   onPageChange,
   overrides: {
     HeaderComponent,
     SideNavigationComponent,
+    OnPageNavigationComponent,
     ContentComponent,
     MainComponent,
     ButtonComponent,
@@ -258,6 +271,10 @@ function Page({
             </div>
           </>
         </ContentComponent>
+        <OnPageNavigationComponent
+          currentPage={currentPage}
+          items={pageNavigations}
+        />
       </MainComponent>
     </div>
   );
@@ -266,6 +283,7 @@ function Page({
 export {
   Header,
   SideNavigation,
+  OnPageNavigation,
   Content,
   Main,
   H1,
