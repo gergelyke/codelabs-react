@@ -77,3 +77,13 @@ test("Page can be navigated using the buttons at the bottom of the page", async 
   const button = screen.getByRole("button", { name: "Previous" });
   expect(button).toBeDisabled();
 });
+
+test("In page navigation is present", async () => {
+  render(<Default />);
+  fireEvent.click(screen.getByText("Getting set up"));
+  expect(
+    screen.getByRole("link", {
+      name: "Get a key for the Dark Sky API",
+    })
+  ).toBeInTheDocument();
+});

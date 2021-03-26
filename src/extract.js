@@ -2,6 +2,7 @@ import url from "url";
 
 const infoColor = { red: 0.8509804, green: 0.91764706, blue: 0.827451 };
 const warningColor = { red: 0.9882353, green: 0.8980392, blue: 0.8039216 };
+let idCount = 0;
 
 function parse(response, iframeSourceUrls) {
   const { content } = response.body;
@@ -195,9 +196,11 @@ function getParagraphDetails(paragraph) {
   }
 
   try {
-    return {
+    const header = {
       type: mapping[paragraph.paragraphStyle.namedStyleType],
     };
+    header.id = `${header.type}-${idCount++}`;
+    return header;
   } catch (e) {
     // defaults to p
     return { type: "p" };
@@ -253,7 +256,12 @@ function extractTitle(content) {
 
 function extractHeadings(content) {
   const headingNodes = extractHeadingNodes(content);
-  return headingNodes.map(getParagraphText).map((header) => header.trim());
+  return headingNodes.map(getParagraphText).map((header) => {
+    return {
+      id: `h1-${idCount++}`,
+      content: header.trim(),
+    };
+  });
 }
 
 function isEqual(object1, object2) {
